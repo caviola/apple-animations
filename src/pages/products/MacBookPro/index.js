@@ -1,8 +1,9 @@
 import React from 'react';
+import PageHeader from '../../../common/PageHeader';
 
-const MacBookPro = () => {
+const MacBookPro = ({ match }) => {
   return (
-    <div></div>
+    <PageHeader activePath={match.path} />
   );
 }
 

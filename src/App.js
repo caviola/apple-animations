@@ -5,6 +5,7 @@ import MacBookPro from './pages/products/MacBookPro';
 import Watch from './pages/products/Watch';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import './App.scss';
 
 const App = () => {
   return (

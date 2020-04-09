@@ -1,8 +1,11 @@
 import React from 'react';
+import PageHeader from '../../../common/PageHeader';
 
-const IPhone = () => {
+const IPhone = ({ match }) => {
   return (
-    <div></div>
+    <>
+      <PageHeader activePath={match.path} />
+    </>
   );
 }
 

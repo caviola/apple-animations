@@ -1,8 +1,9 @@
 import React from 'react';
+import PageHeader from '../../../common/PageHeader';
 
-const Watch = () => {
+const Watch = ({ match }) => {
   return (
-    <div></div>
+    <PageHeader activePath={match.path} />
   );
 }
 
