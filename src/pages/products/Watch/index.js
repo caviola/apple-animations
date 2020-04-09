@@ -1,9 +1,11 @@
 import React from 'react';
-import PageHeader from '../../../common/PageHeader';
+import ProductPage from '../../../common/ProductPage';
 
-const Watch = ({ match }) => {
+const Watch = () => {
   return (
-    <PageHeader activePath={match.path} />
+    <ProductPage>
+
+    </ProductPage>
   );
 }
 
