@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import IPhone from './pages/products/IPhone';
+import MacBookPro from './pages/products/MacBookPro';
+import Watch from './pages/products/Watch';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route exact path='/logout' component={Logout} />
+        <Route exact path='/iphone' component={IPhone} />
+        <Route exact path='/macbook-pro' component={MacBookPro} />
+        <Route exact path='/watch' component={Watch} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
