@@ -28,40 +28,59 @@ function usePrevious(value) {
   return ref.current;
 }
 
+/**
+ * Given origin/destination paths, returns which class name to use for CSSTransition.
+ * We use the previous path to determine the transition to use
+ * when navigating to a new product page.
+ * Bellow is the transition table that we're using. Rows are 'origin' paths
+ * and columns are 'destination' paths.
+ *
+ *               +----------+-------------+-------+
+ *               | iPhone   | MacBook Pro | Watch |
+ * +-------------+----------+-------------+-------+
+ * | iPhone      |          | Fade        | Fade  |
+ * | MacBook Pro | Slide Up |             | Fade  |
+ * | Watch       | Slide Up | Slide Left  |       |
+ * +-------------+----------+-------------+-------+
+ *
+ * In the above table we can see that, for example, the iPhone page always slides up,
+ * and Watch always fades in.
+ *
+ * @param {string} fromPath
+ * @param {string} toLocation
+ */
+const getTransitionClassNames = (fromPath, toLocation) => {
+  if (toLocation.state.transitionClass) {
+    return toLocation.state.transitionClass;
+  }
+
+  if (toLocation.pathname === "/macbook-pro") {
+    return fromPath === "/iphone" ? "cross-fade" : "slide-from-right";
+  } else if (toPath === "/iphone") {
+    return "slide-from-bottom";
+  } else {
+    return "cross-fade";
+  }
+};
+
 const AppRoutes = withRouter(({ location }) => {
-  // We'll use the previous path to determine the transition to use
-  // when navigating to a new product page.
-  // Bellow is the transition table that we're using. Rows are 'origin' paths
-  // and columns are 'destination' paths.
-  //
-  //               +----------+-------------+-------+
-  //               | iPhone   | MacBook Pro | Watch |
-  // +-------------+----------+-------------+-------+
-  // | iPhone      |          | Fade        | Fade  |
-  // | MacBook Pro | Slide Up |             | Fade  |
-  // | Watch       | Slide Up | Slide Left  |       |
-  // +-------------+----------+-------------+-------+
-  //
-  // In the above table we can see that, for example, the iPhone page always slides up.
-  //
   const referer = usePrevious(location.pathname);
 
-  // Used to determine which classNames to use in CSSTransition
-  // depending on the origin/destination paths.
   const transitionGroupChildFactory = (child) => {
-    let classNames;
-
-    if (location.pathname === "/macbook-pro") {
-      classNames = referer === "/iphone" ? "cross-fade" : "slide-from-right";
-    } else if (location.pathname === "/iphone") {
-      classNames = "slide-from-bottom";
+    if (location.state && location.state.animate) {
+      // We were requested to animate the transition from one page to the other,
+      // so setup the child element (CSSTransition) with the appropriate animation class.
+      return cloneElement(child, {
+        timeout: transitionDuration,
+        classNames: getTransitionClassNames(referer, location),
+      });
     } else {
-      classNames = "cross-fade";
+      // No animation.
+      return cloneElement(child, {
+        timeout: 0,
+        classNames: "no-anim",
+      });
     }
-
-    return cloneElement(child, {
-      classNames,
-    });
   };
 
   return (
