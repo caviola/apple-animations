@@ -35,9 +35,18 @@ const MacBookPro = () => {
           <div className="product-price">
             <Link to="">Buy now&nbsp;&gt;</Link>
           </div>
+          <div className="mac-pictures"></div>
+          <form className="mac-newsletter-form">
+            <div className="form-title">
+              Subscribe Now
+            </div>
+            <div className="form-content">
+              <input placeholder="Enter the email address" required />
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
         </div>
       </div>
-
     </ProductPage>
   );
 }

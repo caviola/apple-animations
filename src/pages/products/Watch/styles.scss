@@ -1,6 +1,6 @@
 .product-details--watch {
-  .product-text {
-    background: linear-gradient(90deg, #F2F2F2 0%, #FFFFFF00 100%) 0% 0% no-repeat;
+  .product-details {
+    background: linear-gradient(90deg, #F2F2F2 0%, #FFFFFF00 50%) 0% 0% no-repeat;
   }
 
   .product-name {
@@ -22,5 +22,25 @@
   .product-image img {
     width: 600px;
     top: 60px;
+  }
+
+  // 'appear' animations.
+  .product-details,
+  .product-extra {
+    transition: .8s all;
+    transition-delay: .3s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .appear & {    
+    .product-details {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+
+    .product-extra {
+      transform: translateY(50px);
+      opacity: 0;
+    }
   }
 }

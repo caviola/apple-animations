@@ -11,13 +11,21 @@ import Logout from './pages/Logout';
 const transitionDuration = 700; // milliseconds
 
 const transitionGroupChildFactory = child => {
-  return cloneElement(child);
+  return cloneElement(child, {
+    className: ''
+  });
 }
+
+// Add class to setup page-specific entering animations.
+const cssTransitionEnter = elem => elem.classList.add('appear');
+
+// Remove class so that entering animations begin.
+const cssTransitionEntering = elem => elem.classList.remove('appear');
 
 const AppRoutes = withRouter(({ location }) => {
   return (
     <TransitionGroup childFactory={transitionGroupChildFactory} className="product-page-container">
-      <CSSTransition key={location.key} timeout={transitionDuration} classNames="slide-from-right" >
+      <CSSTransition key={location.key} appear={true} timeout={transitionDuration} classNames="cross-fade" onEnter={cssTransitionEnter} onEntering={cssTransitionEntering}>
         <Switch location={location}>
           <Route exact path='/' component={Login} />
           <Route exact path='/logout' component={Logout} />

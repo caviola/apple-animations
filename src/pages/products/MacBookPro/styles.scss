@@ -21,7 +21,7 @@
       font-size: 50px;
       font-weight: bold;
       display: inline-block;
-      
+
       small {
         font-weight: normal;
         display: block;
@@ -40,7 +40,120 @@
     left: -200px;
   }
 
+  .product-extra {
+    display: flex;
+    padding-right: 0;
+  }
+
+  .product-price {
+    width: 15%
+  }
+
+  .mac-pictures {
+    width: 35%;
+  }
+
+  .mac-newsletter-form {
+    position: relative;
+    top: -110px;
+    width: 50%;
+    background: #F2F2F2;
+    padding: 62px 108px;
+
+    .form-title {
+      color: #000;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 55px;
+      margin-bottom: 20px;
+    }
+
+    .form-content {
+      display: flex;
+
+      input {
+        border: 0;
+        height: 54px;
+        background: #fff;
+        font-size: 14px;
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      button {
+        border: 0;
+        background: #000;
+        color: #fff;
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: bold;
+        margin-left: 15px;
+        padding-left: 40px;
+        padding-right: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+
   .product-price a {
     color: #5AC8FA;
+  }
+
+  .mac-pictures {
+    height: 281px;
+    background: url(../../../images/macbook-pictures-big.png) center no-repeat;
+    background-size: cover;
+  }
+
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and ( min--moz-device-pixel-ratio: 1.25),
+    only screen and ( -o-min-device-pixel-ratio: 1.25/1),
+    only screen and ( min-device-pixel-ratio: 1.25),
+    only screen and ( min-resolution: 200dpi),
+    only screen and ( min-resolution: 1.25dppx) {
+      .mac-pictures {
+        background-image: url(../../../images/macbook-pictures-big@2x.png);
+      }
+  }
+
+  // 'appear' animations.
+  .product-name,
+  .product-title,
+  .product-description,
+  .product-price,
+  .mac-pictures,
+  .mac-newsletter-form,
+  .product-image {
+    transition: .7s all;
+    transition-delay: .5s;
+  }
+
+  .appear & {
+    .product-name,
+    .product-title {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+
+    .product-description {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+
+    .product-image {
+      opacity: .2;
+    }
+
+    .product-price {
+      opacity: 0;
+    }
+
+    .mac-pictures,
+    .mac-newsletter-form {
+      transform: translateY(50px);
+    }
   }
 }
