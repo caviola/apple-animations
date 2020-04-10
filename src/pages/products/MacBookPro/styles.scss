@@ -1,0 +1,46 @@
+.product-details--macbook-pro {
+  .product-details {
+    background: #000;
+  }
+
+  .product-name {
+    color: #5AC8FA;
+  }
+
+  .product-title {
+    color: #fff;
+  }
+
+  .product-description {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #707070;
+
+    li {
+      font-size: 50px;
+      font-weight: bold;
+      display: inline-block;
+      
+      small {
+        font-weight: normal;
+        display: block;
+        font-size: 20px;
+      }
+
+      & + li {
+        margin-left: 60px;
+      }
+    }
+  }
+
+  .product-image img {
+    width: 700px;
+    top: 60px;
+    left: -200px;
+  }
+
+  .product-price a {
+    color: #5AC8FA;
+  }
+}

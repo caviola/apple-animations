@@ -1,0 +1,26 @@
+.product-details--watch {
+  .product-text {
+    background: linear-gradient(90deg, #F2F2F2 0%, #FFFFFF00 100%) 0% 0% no-repeat;
+  }
+
+  .product-name {
+    color: #FF2D55;
+  }
+
+  .product-title {
+    color: #000;
+  }
+
+  .product-description {
+    color: #999999;
+  }
+
+  .product-price a {
+    color: #FF2D55;
+  }
+
+  .product-image img {
+    width: 600px;
+    top: 60px;
+  }
+}

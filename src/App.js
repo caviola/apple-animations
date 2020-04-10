@@ -1,12 +1,14 @@
 import React, { cloneElement } from 'react';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import './App.scss';
 import IPhone from './pages/products/IPhone';
 import MacBookPro from './pages/products/MacBookPro';
 import Watch from './pages/products/Watch';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
-import './App.scss';
+
+const transitionDuration = 700; // milliseconds
 
 const transitionGroupChildFactory = child => {
   return cloneElement(child);
@@ -14,8 +16,8 @@ const transitionGroupChildFactory = child => {
 
 const AppRoutes = withRouter(({ location }) => {
   return (
-    <TransitionGroup childFactory={transitionGroupChildFactory} className="app-route-container">
-      <CSSTransition key={location.key} timeout={700} classNames="slide-from-right" >
+    <TransitionGroup childFactory={transitionGroupChildFactory} className="product-page-container">
+      <CSSTransition key={location.key} timeout={transitionDuration} classNames="slide-from-right" >
         <Switch location={location}>
           <Route exact path='/' component={Login} />
           <Route exact path='/logout' component={Logout} />

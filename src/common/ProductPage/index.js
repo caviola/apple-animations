@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom';
 import PageHeader from '../PageHeader';
 import './styles.scss';
 
-const ProductPage = withRouter(({ match }) => {
+const ProductPage = withRouter(({ match, children }) => {
   return (
     <div className="product-page">
       <PageHeader activePath={match.path} />
-    </div>    
+      {children}
+    </div>
   );
 });
 

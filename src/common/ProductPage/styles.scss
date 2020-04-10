@@ -1,8 +1,68 @@
+@import '../../common/variables.scss';
+
 .product-page {
   position: absolute;
   width: 100%;
-  top: 0;  
+  top: 0;
   left: 0;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.product-details-container {
+  padding-left: 100px;
+}
+
+.product-details {
+  display: flex;
+}
+
+.product-text {
+  width: 55%;
+  padding: 84px 90px;
+}
+
+.product-image {
+  width: 45%;
+  position: relative;
+
+  img {
+    position: absolute;
+  }
+}
+
+.product-name {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: bold;
+  margin-bottom: 17px;
+}
+
+.product-title {
+  font-size: 100px;
+  line-height: 110px;
+  font-weight: bold;
+  margin-bottom: 70px;
+}
+
+.product-description {
+  font-size: 25px;
+  line-height: 35px;
+}
+
+.product-extra {
+  padding: 84px 90px;
+}
+
+.product-price {
+  font-size: 50px;
+  color: #CCCCCC;
+  font-weight: bold;
+
+  a {
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+  }
 }

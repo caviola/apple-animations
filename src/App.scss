@@ -1,23 +1,10 @@
-$page-transition-duration: .7s;
+@import './common/variables.scss';
 
-// TODO: use full-fledged normalize/reset styles 
-// for consistent default styling across browsers.
-html, body {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  line-height: 30px;
-  color: #707070;
-}
-
-.app-route-container {
+.product-page-container {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .slide-from-right {
