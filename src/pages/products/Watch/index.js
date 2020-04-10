@@ -1,9 +1,9 @@
-import React from 'react';
-import ProductPage from '../../../common/ProductPage';
-import { Link } from 'react-router-dom';
-import './styles.scss';
-import blackwatch from '../../../images/black-watch-big.png';
-import blackwatch2x from '../../../images/black-watch-big@2x.png';
+import React from "react";
+import ProductPage from "../../../common/ProductPage";
+import { Link } from "react-router-dom";
+import "./styles.scss";
+import blackwatch from "../../../images/black-watch-big.png";
+import blackwatch2x from "../../../images/black-watch-big@2x.png";
 
 const Watch = () => {
   return (
@@ -23,7 +23,11 @@ const Watch = () => {
             </div>
           </div>
           <div className="product-image">
-            <img srcSet={`${blackwatch} 1x, ${blackwatch2x} 2x`} src={blackwatch} alt="Watch" />
+            <img
+              srcSet={`${blackwatch} 1x, ${blackwatch2x} 2x`}
+              src={blackwatch}
+              alt="Watch"
+            />
           </div>
         </div>
         <div className="product-extra">
@@ -35,6 +39,6 @@ const Watch = () => {
       </div>
     </ProductPage>
   );
-}
+};
 
 export default Watch;

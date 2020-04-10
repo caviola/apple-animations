@@ -1,10 +1,11 @@
 .product-details--watch {
   .product-details {
-    background: linear-gradient(90deg, #F2F2F2 0%, #FFFFFF00 50%) 0% 0% no-repeat;
+    background: linear-gradient(90deg, #f2f2f2 0%, #ffffff00 50%) 0% 0%
+      no-repeat;
   }
 
   .product-name {
-    color: #FF2D55;
+    color: #ff2d55;
   }
 
   .product-title {
@@ -16,7 +17,7 @@
   }
 
   .product-price a {
-    color: #FF2D55;
+    color: #ff2d55;
   }
 
   .product-image img {
@@ -27,12 +28,12 @@
   // 'appear' animations.
   .product-details,
   .product-extra {
-    transition: .8s all;
-    transition-delay: .3s;
+    transition: 0.8s all;
+    transition-delay: 0.3s;
     transition-timing-function: ease-in-out;
   }
 
-  .appear & {    
+  .appear & {
     .product-details {
       transform: translateX(-50px);
       opacity: 0;

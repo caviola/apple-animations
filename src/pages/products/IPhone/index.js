@@ -1,9 +1,9 @@
-import React from 'react';
-import ProductPage from '../../../common/ProductPage';
-import { Link } from 'react-router-dom';
-import './styles.scss';
-import iphone from '../../../images/iphone-big.png';
-import iphone2x from '../../../images/iphone-big@2x.png';
+import React from "react";
+import ProductPage from "../../../common/ProductPage";
+import { Link } from "react-router-dom";
+import "./styles.scss";
+import iphone from "../../../images/iphone-big.png";
+import iphone2x from "../../../images/iphone-big@2x.png";
 
 const IPhone = () => {
   return (
@@ -22,7 +22,11 @@ const IPhone = () => {
             </div>
           </div>
           <div className="product-image">
-            <img srcSet={`${iphone} 1x, ${iphone2x} 2x`} src={iphone} alt="iPhone" />
+            <img
+              srcSet={`${iphone} 1x, ${iphone2x} 2x`}
+              src={iphone}
+              alt="iPhone"
+            />
           </div>
         </div>
         <div className="product-extra">
@@ -32,8 +36,8 @@ const IPhone = () => {
           </div>
         </div>
       </div>
-    </ProductPage >
+    </ProductPage>
   );
-}
+};
 
 export default IPhone;

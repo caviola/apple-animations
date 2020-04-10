@@ -4,7 +4,7 @@
   }
 
   .product-name {
-    color: #5AC8FA;
+    color: #5ac8fa;
   }
 
   .product-title {
@@ -46,7 +46,7 @@
   }
 
   .product-price {
-    width: 15%
+    width: 15%;
   }
 
   .mac-pictures {
@@ -57,7 +57,7 @@
     position: relative;
     top: -110px;
     width: 50%;
-    background: #F2F2F2;
+    background: #f2f2f2;
     padding: 62px 108px;
 
     .form-title {
@@ -79,7 +79,7 @@
         width: 100%;
         padding-left: 40px;
         padding-right: 40px;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
       }
 
       button {
@@ -98,7 +98,7 @@
   }
 
   .product-price a {
-    color: #5AC8FA;
+    color: #5ac8fa;
   }
 
   .mac-pictures {
@@ -107,16 +107,15 @@
     background-size: cover;
   }
 
-  @media
-    only screen and (-webkit-min-device-pixel-ratio: 1.25),
-    only screen and ( min--moz-device-pixel-ratio: 1.25),
-    only screen and ( -o-min-device-pixel-ratio: 1.25/1),
-    only screen and ( min-device-pixel-ratio: 1.25),
-    only screen and ( min-resolution: 200dpi),
-    only screen and ( min-resolution: 1.25dppx) {
-      .mac-pictures {
-        background-image: url(../../../images/macbook-pictures-big@2x.png);
-      }
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and (min--moz-device-pixel-ratio: 1.25),
+    only screen and (-o-min-device-pixel-ratio: 1.25/1),
+    only screen and (min-device-pixel-ratio: 1.25),
+    only screen and (min-resolution: 200dpi),
+    only screen and (min-resolution: 1.25dppx) {
+    .mac-pictures {
+      background-image: url(../../../images/macbook-pictures-big@2x.png);
+    }
   }
 
   // 'appear' animations.
@@ -127,8 +126,8 @@
   .mac-pictures,
   .mac-newsletter-form,
   .product-image {
-    transition: .7s all;
-    transition-delay: .5s;
+    transition: 0.7s all;
+    transition-delay: 0.5s;
   }
 
   .appear & {
@@ -144,7 +143,7 @@
     }
 
     .product-image {
-      opacity: .2;
+      opacity: 0.2;
     }
 
     .product-price {

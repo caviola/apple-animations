@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ProductPage from '../../../common/ProductPage';
-import './styles.scss';
-import macbookpro from '../../../images/macbookpro-big.png';
-import macbookpro2x from '../../../images/macbookpro-big@2x.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import ProductPage from "../../../common/ProductPage";
+import "./styles.scss";
+import macbookpro from "../../../images/macbookpro-big.png";
+import macbookpro2x from "../../../images/macbookpro-big@2x.png";
 
 const MacBookPro = () => {
   return (
@@ -19,16 +19,20 @@ const MacBookPro = () => {
             <ul className="product-description">
               <li>
                 8-core
-              <small>Intel processor</small>
+                <small>Intel processor</small>
               </li>
               <li>
                 32GB
-              <small>32GB</small>
+                <small>32GB</small>
               </li>
             </ul>
           </div>
           <div className="product-image">
-            <img srcSet={`${macbookpro} 1x, ${macbookpro2x} 2x`} src={macbookpro} alt="MacBook Pro" />
+            <img
+              srcSet={`${macbookpro} 1x, ${macbookpro2x} 2x`}
+              src={macbookpro}
+              alt="MacBook Pro"
+            />
           </div>
         </div>
         <div className="product-extra">
@@ -37,9 +41,7 @@ const MacBookPro = () => {
           </div>
           <div className="mac-pictures"></div>
           <form className="mac-newsletter-form">
-            <div className="form-title">
-              Subscribe Now
-            </div>
+            <div className="form-title">Subscribe Now</div>
             <div className="form-content">
               <input placeholder="Enter the email address" required />
               <button type="submit">Subscribe</button>
@@ -49,6 +51,6 @@ const MacBookPro = () => {
       </div>
     </ProductPage>
   );
-}
+};
 
 export default MacBookPro;

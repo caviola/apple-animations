@@ -1,4 +1,4 @@
-@import '../../common/variables.scss';
+@import "../../common/variables.scss";
 
 .product-page {
   position: absolute;
@@ -55,7 +55,7 @@
 
 .product-price {
   font-size: 50px;
-  color: #CCCCCC;
+  color: #cccccc;
   font-weight: bold;
 
   a {
