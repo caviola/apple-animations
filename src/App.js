@@ -6,7 +6,6 @@ import IPhone from "./pages/products/IPhone";
 import MacBookPro from "./pages/products/MacBookPro";
 import Watch from "./pages/products/Watch";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
 import RegistrationForm from "./pages/RegistrationForm";
 
 const transitionDuration = 700; // milliseconds
@@ -100,7 +99,6 @@ const AppRoutes = withRouter(({ location }) => {
       >
         <Switch location={location}>
           <Route exact path="/" component={Login} />
-          <Route exact path="/logout" component={Logout} />
           <Route exact path="/register" component={RegistrationForm} />
           <Route exact path="/iphone" component={IPhone} />
           <Route exact path="/macbook-pro" component={MacBookPro} />
