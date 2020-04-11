@@ -7,6 +7,7 @@ import MacBookPro from "./pages/products/MacBookPro";
 import Watch from "./pages/products/Watch";
 import Login from "./pages/Login";
 import RegistrationForm from "./pages/RegistrationForm";
+import { ProtectedRoute } from "./common/session";
 
 const transitionDuration = 700; // milliseconds
 
@@ -100,9 +101,9 @@ const AppRoutes = withRouter(({ location }) => {
         <Switch location={location}>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={RegistrationForm} />
-          <Route exact path="/iphone" component={IPhone} />
-          <Route exact path="/macbook-pro" component={MacBookPro} />
-          <Route exact path="/watch" component={Watch} />
+          <ProtectedRoute exact path="/iphone" component={IPhone} />
+          <ProtectedRoute exact path="/macbook-pro" component={MacBookPro} />
+          <ProtectedRoute exact path="/watch" component={Watch} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

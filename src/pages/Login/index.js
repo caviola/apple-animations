@@ -1,12 +1,20 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { login, useAuthenticatedUser } from "../../common/session";
 import "../../common/forms.scss";
 import "./styles.scss";
 
 const requiredFieldMessage = "This field is required";
+const initialPage = "/iphone";
 
-const Login = ({ history }) => {
+const Login = ({ history, location }) => {
+  // Where to go after successful login.
+  const destination =
+    location.state && location.state.referer
+      ? location.state.referer
+      : initialPage;
+
   const validate = (values) => {
     let errors = {};
 
@@ -30,17 +38,31 @@ const Login = ({ history }) => {
     return errors;
   };
 
-  const submit = (values) => {
-    history.push({
-      pathname: "/iphone",
-      state: {
+  const submit = (values, { setSubmitting }) => {
+    // Call login API and on success redirect to referer or initial page.
+    login(values.email, values.pwd).then(() => {
+      history.push(destination, {
         animate: true,
         transitionClass: "scale-down",
-      },
+      });
+
+      setSubmitting(false);
     });
   };
 
-  return (
+  const user = useAuthenticatedUser();
+
+  return user ? (
+    <Redirect
+      to={{
+        pathname: destination,
+        state: {
+          animate: true,
+          transitionClass: "scale-down",
+        },
+      }}
+    />
+  ) : (
     <div className="login-form-container">
       <Formik
         initialValues={{
@@ -52,7 +74,7 @@ const Login = ({ history }) => {
         onSubmit={submit}
         validate={validate}
       >
-        {({ errors, values }) => {
+        {({ errors, isSubmitting }) => {
           return (
             <Form className="form login-form">
               <div className="form-title">Login</div>
@@ -69,7 +91,9 @@ const Login = ({ history }) => {
                 )}
               </div>
               <div className="form-actions">
-                <button type="submit">Login</button>
+                <button type="submit" disabled={isSubmitting}>
+                  Login
+                </button>
               </div>
               <p>
                 Don't have an account? <Link to="/register">Register now</Link>
