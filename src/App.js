@@ -56,7 +56,9 @@ const getTransitionClassNames = (fromPath, toLocation) => {
 
   if (toLocation.pathname === "/macbook-pro") {
     return fromPath === "/iphone" ? "cross-fade" : "slide-from-right";
-  } else if (toPath === "/iphone") {
+  }
+
+  if (toLocation.pathname === "/iphone") {
     return "slide-from-bottom";
   } else {
     return "cross-fade";

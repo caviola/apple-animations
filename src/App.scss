@@ -76,3 +76,18 @@
     display: none;
   }
 }
+
+.scale-down {
+  &-enter {
+    transform: scale(2);
+    transition: $page-transition-duration all;
+  }
+
+  &-enter-active {
+    transform: scale(1);
+  }
+
+  &-exit {
+    display: none;
+  }
+}
