@@ -11,7 +11,12 @@ const PageHeader = ({ activePath }) => {
         <ul>
           <li>
             <Link
-              to="/iphone"
+              to={{
+                pathname: "/iphone",
+                state: {
+                  animate: true,
+                },
+              }}
               className={cx({ active: activePath === "/iphone" })}
             >
               iPhone
@@ -19,7 +24,12 @@ const PageHeader = ({ activePath }) => {
           </li>
           <li>
             <Link
-              to="/macbook-pro"
+              to={{
+                pathname: "/macbook-pro",
+                state: {
+                  animate: true,
+                },
+              }}
               className={cx({ active: activePath === "/macbook-pro" })}
             >
               MacBook Pro
@@ -27,7 +37,12 @@ const PageHeader = ({ activePath }) => {
           </li>
           <li>
             <Link
-              to="/watch"
+              to={{
+                pathname: "/watch",
+                state: {
+                  animate: true,
+                },
+              }}
               className={cx({ active: activePath === "/watch" })}
             >
               Watch

@@ -91,7 +91,7 @@ const AppRoutes = withRouter(({ location }) => {
       <CSSTransition
         key={location.key}
         appear={true}
-        timeout={transitionDuration}
+        timeout={0}
         onEnter={cssTransitionEnter}
         onEntering={cssTransitionEntering}
       >
