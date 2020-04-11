@@ -12,11 +12,11 @@ const transitionDuration = 700; // milliseconds
 
 // When a page is about to be transitioned into view, we add a class
 // so that page-specific animations are setup.
-const cssTransitionEnter = (elem) => elem.classList.add("appear");
+const cssTransitionEnter = (elem) => elem && elem.classList.add("appear");
 
 // As soon as page starts transitioning into view, we remove the class
 // so that entering animations begin.
-const cssTransitionEntering = (elem) => elem.classList.remove("appear");
+const cssTransitionEntering = (elem) => elem && elem.classList.remove("appear");
 
 function usePrevious(value) {
   const ref = useRef();
