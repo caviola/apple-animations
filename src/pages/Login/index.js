@@ -46,8 +46,6 @@ const Login = ({ history, location }) => {
         animate: true,
         transitionClass: "scale-down",
       });
-
-      setSubmitting(false);
     });
   };
 
