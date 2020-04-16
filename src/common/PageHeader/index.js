@@ -14,6 +14,7 @@ const PageHeader = ({ activePath }) => {
               to={{
                 pathname: "/iphone",
                 state: {
+                  referer: activePath,
                   animate: true,
                 },
               }}
@@ -27,6 +28,7 @@ const PageHeader = ({ activePath }) => {
               to={{
                 pathname: "/macbook-pro",
                 state: {
+                  referer: activePath,
                   animate: true,
                 },
               }}
@@ -40,6 +42,7 @@ const PageHeader = ({ activePath }) => {
               to={{
                 pathname: "/watch",
                 state: {
+                  referer: activePath,
                   animate: true,
                 },
               }}

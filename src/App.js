@@ -1,4 +1,4 @@
-import React, { cloneElement, useRef, useEffect } from "react";
+import React, { cloneElement } from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./App.scss";
@@ -18,16 +18,6 @@ const cssTransitionEnter = (elem) => elem && elem.classList.add("appear");
 // As soon as page starts transitioning into view, we remove the class
 // so that entering animations begin.
 const cssTransitionEntering = (elem) => elem && elem.classList.remove("appear");
-
-function usePrevious(value) {
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = value;
-  });
-
-  return ref.current;
-}
 
 /**
  * Given origin/destination paths, returns which class name to use for CSSTransition.
@@ -67,21 +57,31 @@ const getTransitionClassNames = (fromPath, toLocation) => {
 };
 
 const AppRoutes = withRouter(({ location }) => {
-  const referer = usePrevious(location.pathname);
+  const referer = location.state && location.state.referer;
 
   const transitionGroupChildFactory = (child) => {
-    if (location.state && location.state.animate) {
+    if (
+      referer !== location.pathname &&
+      location.state &&
+      location.state.animate
+    ) {
       // We were requested to animate the transition from one page to the other,
       // so setup the child element (CSSTransition) with the appropriate animation class.
       return cloneElement(child, {
         timeout: transitionDuration,
         classNames: getTransitionClassNames(referer, location),
+        appear: true,
+        onEnter: cssTransitionEnter,
+        onEntering: cssTransitionEntering,
       });
     } else {
       // No animation.
       return cloneElement(child, {
         timeout: 0,
         classNames: "no-anim",
+        appear: false,
+        onEnter: null,
+        onEntering: null,
       });
     }
   };
@@ -91,13 +91,7 @@ const AppRoutes = withRouter(({ location }) => {
       childFactory={transitionGroupChildFactory}
       className="product-page-container"
     >
-      <CSSTransition
-        key={location.key}
-        appear={true}
-        timeout={0}
-        onEnter={cssTransitionEnter}
-        onEntering={cssTransitionEntering}
-      >
+      <CSSTransition key={location.key} timeout={0}>
         <Switch location={location}>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={RegistrationForm} />

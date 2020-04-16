@@ -42,6 +42,7 @@ const Login = ({ history, location }) => {
     // Call login API and on success redirect to referer or initial page.
     login(values.email, values.pwd).then(() => {
       history.push(destination, {
+        referer: location.pathname,
         animate: true,
         transitionClass: "scale-down",
       });
