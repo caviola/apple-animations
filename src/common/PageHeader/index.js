@@ -1,69 +1,67 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cx from "classnames";
 import { StyleSheet, css } from "aphrodite/no-important";
 
-const syles = StyleSheet.create({
-  pageHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingRight: '115px',
-  
-    logo: {
-      display: 'inline-block',
-      width: '100px',
-      height: '100px',
-      background: '#000',
-    },
-  
-    nav: {
-      marginLeft: 'auto',
-    },
-  
-    ul: {
-      listStyleType: 'none',
-      display: 'flex',
-      alignItems: 'center',
-  
-      li: {
-        'li + li': {
-          marginLeft: '51px',
-        },
-  
-        a: {
-          color: '#707070',
-          textDecoration: 'none',
-          cursor: 'pointer',
-  
-          &.active {
-            fontWeight: 'bold',
-            color: '#000',
-          },
+const styles = StyleSheet.create({
+  header: {
+    display: "flex",
+    alignItems: "center",
+    paddingRight: "115px",
+  },
 
-          whiteSpace: 'nowrap',
-        },
-  
-        notify: {
-          fontSize: 'inherit',
-          display: 'inline-block',
-          border: 'none',
-          background: '#5ac8fa',
-          color: 'white',
-          padding: '10px 25px',
-          borderRadius: '25px',
-        }
-      }
-    }
-  }  
+  logo: {
+    display: "inline-block",
+    width: "100px",
+    height: "100px",
+    background: "#000",
+  },
+
+  nav: {
+    marginLeft: "auto",
+  },
+
+  navItems: {
+    listStyleType: "none",
+    display: "flex",
+    alignItems: "center",
+  },
+
+  navItem: {
+    ":not(:first-child)": {
+      marginLeft: "51px",
+    },
+  },
+
+  link: {
+    color: "#707070",
+    textDecoration: "none",
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+  },
+
+  activeLink: {
+    fontWeight: "bold",
+    color: "#000",
+  },
+
+  notifyLink: {
+    fontSize: "inherit",
+    display: "inline-block",
+    border: "none",
+    background: "#5ac8fa",
+    color: "white",
+    padding: "10px 25px",
+    borderRadius: "25px",
+  },
 });
 
 function PageHeader({ activePath }) {
   return (
-    <div className={styles.header}>
-      <Link to="" className={styles.logo} title="Apple logo"></Link>
-      <nav>
-        <ul>
-          <li>
+    <div className={css(styles.header)}>
+      <Link to="" className={css(styles.logo)} title="Apple logo"></Link>
+      <nav className={css(styles.nav)}>
+        <ul className={css(styles.navItems)}>
+          <li className={css(styles.navItem)}>
             <Link
               to={{
                 pathname: "/iphone",
@@ -72,12 +70,15 @@ function PageHeader({ activePath }) {
                   animate: true,
                 },
               }}
-              className={cx({ [styles.active]: activePath === "/iphone" })}
+              className={css(
+                styles.link,
+                activePath === "/iphone" && styles.activeLink
+              )}
             >
               iPhone
             </Link>
           </li>
-          <li>
+          <li className={css(styles.navItem)}>
             <Link
               to={{
                 pathname: "/macbook-pro",
@@ -86,12 +87,15 @@ function PageHeader({ activePath }) {
                   animate: true,
                 },
               }}
-              className={cx({ [styles.active]: activePath === "/macbook-pro" })}
+              className={css(
+                styles.link,
+                activePath === "/macbook-pro" && styles.activeLink
+              )}
             >
               MacBook Pro
             </Link>
           </li>
-          <li>
+          <li className={css(styles.navItem)}>
             <Link
               to={{
                 pathname: "/watch",
@@ -100,13 +104,16 @@ function PageHeader({ activePath }) {
                   animate: true,
                 },
               }}
-              className={cx({ [styles.active]: activePath === "/watch" })}
+              className={css(
+                styles.link,
+                activePath === "/watch" && styles.activeLink
+              )}
             >
               Watch
             </Link>
           </li>
-          <li>
-            <Link to="" className={styles.notify}>
+          <li className={css(styles.navItem)}>
+            <Link to="" className={css(styles.link, styles.notifyLink)}>
               Notify me
             </Link>
           </li>
