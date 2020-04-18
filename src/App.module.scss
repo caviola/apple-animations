@@ -1,0 +1,95 @@
+@import "./common/variables.scss";
+
+.container {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+:global {
+  .slide-from-right {
+    &-enter {
+      transform: translateX(100%);
+      transition: $page-transition-duration all;
+    }
+
+    &-enter-active {
+      transform: translateX(0);
+    }
+
+    &-exit {
+      transform: translateX(0);
+      transition: $page-transition-duration all;
+    }
+
+    &-exit-active {
+      transform: translateX(-100%);
+    }
+  }
+
+  .slide-from-bottom {
+    &-enter {
+      transform: translateY(100%);
+      transition: $page-transition-duration all;
+    }
+
+    &-enter-active {
+      transform: translateY(0);
+    }
+
+    &-exit {
+      transform: translateY(0);
+      transition: $page-transition-duration all;
+    }
+
+    &-exit-active {
+      transform: translateY(-100%);
+    }
+  }
+
+  .cross-fade {
+    &-enter {
+      opacity: 0;
+      transition: $page-transition-duration all;
+    }
+
+    &-enter-active {
+      opacity: 1;
+    }
+
+    &-exit {
+      opacity: 1;
+      transition: $page-transition-duration all;
+    }
+
+    &-exit-active {
+      opacity: 0;
+    }
+  }
+
+  .no-anim {
+    &-enter {
+      display: block;
+    }
+
+    &-exit {
+      display: none;
+    }
+  }
+
+  .scale-down {
+    &-enter {
+      transform: scale(2);
+      transition: $page-transition-duration all;
+    }
+
+    &-enter-active {
+      transform: scale(1);
+    }
+
+    &-exit {
+      display: none;
+    }
+  }
+}

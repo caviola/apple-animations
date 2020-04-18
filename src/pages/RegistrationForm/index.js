@@ -1,8 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
-import "../../common/forms.scss";
-import "./styles.scss";
+import cx from "classnames";
+import form from "../../common/forms.module.scss";
+import styles from "./styles.module.scss";
 
 const requiredFieldMessage = "This field is required";
 
@@ -42,7 +43,7 @@ const RegistrationForm = ({ history }) => {
   // that takes care of 'required' validation and showing the error if any.
 
   return (
-    <div className="registration-form-container">
+    <div className={styles.container}>
       <Formik
         initialValues={{
           firstname: "",
@@ -58,43 +59,39 @@ const RegistrationForm = ({ history }) => {
       >
         {({ errors, values }) => {
           return (
-            <Form className="form registration-form">
-              <div className="form-title">Create account</div>
-              <div className="form-field">
+            <Form className={cx(form.form, styles.form)}>
+              <div className={form.title}>Create account</div>
+              <div className={form.field}>
                 <Field name="firstname" placeholder="First name" />
                 {errors.firstname && (
-                  <div className="form-field-error">{errors.firstname}</div>
+                  <div className={form.error}>{errors.firstname}</div>
                 )}
               </div>
-              <div className="form-field">
+              <div className={form.field}>
                 <Field name="lastname" placeholder="Last name" />
                 {errors.lastname && (
-                  <div className="form-field-error">{errors.lastname}</div>
+                  <div className={form.error}>{errors.lastname}</div>
                 )}
               </div>
-              <div className="form-field">
+              <div className={form.field}>
                 <Field name="email" type="email" placeholder="Email" />
                 {errors.email && (
-                  <div className="form-field-error">{errors.email}</div>
+                  <div className={form.error}>{errors.email}</div>
                 )}
               </div>
-              <div className="form-field">
+              <div className={form.field}>
                 <Field name="pwd1" type="password" placeholder="Password" />
-                {errors.pwd1 && (
-                  <div className="form-field-error">{errors.pwd1}</div>
-                )}
+                {errors.pwd1 && <div className={form.error}>{errors.pwd1}</div>}
               </div>
-              <div className="form-field">
+              <div className={form.field}>
                 <Field
                   name="pwd2"
                   type="password"
                   placeholder="Confirm Password"
                 />
-                {errors.pwd2 && (
-                  <div className="form-field-error">{errors.pwd2}</div>
-                )}
+                {errors.pwd2 && <div className={form.error}>{errors.pwd2}</div>}
               </div>
-              <div className="form-actions">
+              <div className={form.actions}>
                 <button type="submit">Register</button>
               </div>
               <p>

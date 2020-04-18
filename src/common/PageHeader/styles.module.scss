@@ -1,14 +1,7 @@
-.page-header {
+.header {
   display: flex;
   align-items: center;
   padding-right: 115px;
-
-  .logo {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background: #000;
-  }
 
   nav {
     margin-left: auto;
@@ -47,4 +40,11 @@
       }
     }
   }
+}
+
+.logo {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: #000;
 }

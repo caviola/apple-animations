@@ -1,7 +1,7 @@
 import React, { cloneElement } from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import "./App.scss";
+import styles from "./App.module.scss";
 import IPhone from "./pages/products/IPhone";
 import MacBookPro from "./pages/products/MacBookPro";
 import Watch from "./pages/products/Watch";
@@ -89,7 +89,7 @@ const AppRoutes = withRouter(({ location }) => {
   return (
     <TransitionGroup
       childFactory={transitionGroupChildFactory}
-      className="product-page-container"
+      className={styles.container}
     >
       <CSSTransition key={location.key} timeout={0}>
         <Switch location={location}>

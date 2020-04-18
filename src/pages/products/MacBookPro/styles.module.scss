@@ -1,0 +1,153 @@
+.details {
+  background: #000;
+}
+
+.name {
+  color: #5ac8fa;
+}
+
+.title {
+  color: #fff;
+}
+
+.description {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  color: #707070;
+
+  li {
+    font-size: 50px;
+    font-weight: bold;
+    display: inline-block;
+
+    small {
+      font-weight: normal;
+      display: block;
+      font-size: 20px;
+    }
+
+    & + li {
+      margin-left: 60px;
+    }
+  }
+}
+
+.image img {
+  width: 700px;
+  top: 60px;
+  left: -200px;
+}
+
+.extra {
+  display: flex;
+  padding-right: 0;
+}
+
+.price {
+  width: 15%;
+
+  a {
+    color: #5ac8fa;
+  }
+}
+
+.form {
+  position: relative;
+  top: -110px;
+  width: 50%;
+  background: #f2f2f2;
+  padding: 62px 108px;
+}
+
+.formTitle {
+  color: #000;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 55px;
+  margin-bottom: 20px;
+}
+
+.formContent {
+  display: flex;
+
+  input {
+    border: 0;
+    height: 54px;
+    background: #fff;
+    font-size: 14px;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  button {
+    border: 0;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: bold;
+    margin-left: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+}
+
+.pictures {
+  width: 35%;
+  height: 281px;
+  background: url(../../../images/macbook-pictures-big.png) center no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+  only screen and (min--moz-device-pixel-ratio: 1.25),
+  only screen and (-o-min-device-pixel-ratio: 1.25/1),
+  only screen and (min-device-pixel-ratio: 1.25),
+  only screen and (min-resolution: 200dpi),
+  only screen and (min-resolution: 1.25dppx) {
+  .pictures {
+    background-image: url(../../../images/macbook-pictures-big@2x.png);
+  }
+}
+
+// 'appear' transitions.
+.name,
+.title,
+.description,
+.price,
+.pictures,
+.form,
+.image {
+  transition: 0.7s all;
+  transition-delay: 0.5s;
+}
+
+:global(.appear) {
+  .name,
+  .title {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  .description {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  .image {
+    opacity: 0.2;
+  }
+
+  .price {
+    opacity: 0;
+  }
+
+  .pictures,
+  .form {
+    transform: translateY(50px);
+  }
+}

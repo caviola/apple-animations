@@ -6,7 +6,7 @@
   }
 }
 
-.form-title {
+.title {
   text-align: center;
   font-weight: bold;
   font-size: 36px;
@@ -14,7 +14,7 @@
   color: #000;
 }
 
-.form-field {
+.field {
   label {
     display: block;
     color: #000;
@@ -34,14 +34,14 @@
   margin-bottom: 20px;
 }
 
-.form-field-error {
+.error {
   color: red;
   font-size: 0.8em;
   padding-left: 10px;
   margin-top: 5px;
 }
 
-.form-actions {
+.actions {
   margin-top: 40px;
   text-align: center;
 

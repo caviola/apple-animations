@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import cx from "classnames";
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 const PageHeader = ({ activePath }) => {
   return (
-    <div className="page-header">
-      <Link to="" className="logo" title="Apple logo"></Link>
+    <div className={styles.header}>
+      <Link to="" className={styles.logo} title="Apple logo"></Link>
       <nav>
         <ul>
           <li>
@@ -18,7 +18,7 @@ const PageHeader = ({ activePath }) => {
                   animate: true,
                 },
               }}
-              className={cx({ active: activePath === "/iphone" })}
+              className={cx({ [styles.active]: activePath === "/iphone" })}
             >
               iPhone
             </Link>
@@ -32,7 +32,7 @@ const PageHeader = ({ activePath }) => {
                   animate: true,
                 },
               }}
-              className={cx({ active: activePath === "/macbook-pro" })}
+              className={cx({ [styles.active]: activePath === "/macbook-pro" })}
             >
               MacBook Pro
             </Link>
@@ -46,13 +46,13 @@ const PageHeader = ({ activePath }) => {
                   animate: true,
                 },
               }}
-              className={cx({ active: activePath === "/watch" })}
+              className={cx({ [styles.active]: activePath === "/watch" })}
             >
               Watch
             </Link>
           </li>
           <li>
-            <Link to="" className="notify">
+            <Link to="" className={styles.notify}>
               Notify me
             </Link>
           </li>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link, Redirect } from "react-router-dom";
+import cx from "classnames";
 import { login, useAuthenticatedUser } from "../../common/session";
-import "../../common/forms.scss";
-import "./styles.scss";
+import form from "../../common/forms.module.scss";
+import styles from "./styles.module.scss";
 
 const requiredFieldMessage = "This field is required";
 const initialPage = "/iphone";
@@ -62,7 +63,7 @@ const Login = ({ history, location }) => {
       }}
     />
   ) : (
-    <div className="login-form-container">
+    <div className={styles.container}>
       <Formik
         initialValues={{
           email: "",
@@ -75,21 +76,19 @@ const Login = ({ history, location }) => {
       >
         {({ errors, isSubmitting }) => {
           return (
-            <Form className="form login-form">
-              <div className="form-title">Login</div>
-              <div className="form-field">
+            <Form className={cx(form.form, styles.form)}>
+              <div className={form.title}>Login</div>
+              <div className={form.field}>
                 <Field name="email" type="email" placeholder="Email" />
                 {errors.email && (
-                  <div className="form-field-error">{errors.email}</div>
+                  <div className={form.error}>{errors.email}</div>
                 )}
               </div>
-              <div className="form-field">
+              <div className={form.field}>
                 <Field name="pwd" type="password" placeholder="Password" />
-                {errors.pwd && (
-                  <div className="form-field-error">{errors.pwd}</div>
-                )}
+                {errors.pwd && <div className={form.error}>{errors.pwd}</div>}
               </div>
-              <div className="form-actions">
+              <div className={form.actions}>
                 <button type="submit" disabled={isSubmitting}>
                   Login
                 </button>

@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductPage from "../../../common/ProductPage";
-import "./styles.scss";
-import macbookpro from "../../../images/macbookpro-big.png";
-import macbookpro2x from "../../../images/macbookpro-big@2x.png";
+import cx from "classnames";
+import product from "../../../common/product.module.scss";
+import macbook from "./styles.module.scss";
+import imageUrl from "../../../images/macbookpro-big.png";
+import image2xUrl from "../../../images/macbookpro-big@2x.png";
 
 const MacBookPro = () => {
   return (
     <ProductPage>
-      <div className="product-details-container product-details--macbook-pro">
-        <div className="product-details">
-          <div className="product-text">
-            <div className="product-name">MacBook Pro</div>
-            <div className="product-title">
+      <div className={product.detailsContainer}>
+        <div className={cx(product.details, macbook.details)}>
+          <div className={product.textContent}>
+            <div className={cx(product.name, macbook.name)}>MacBook Pro</div>
+            <div className={cx(product.title, macbook.title)}>
               More power. <br />
               More pro
             </div>
-            <ul className="product-description">
+            <ul className={cx(product.description, macbook.description)}>
               <li>
                 8-core
                 <small>Intel processor</small>
@@ -27,22 +29,22 @@ const MacBookPro = () => {
               </li>
             </ul>
           </div>
-          <div className="product-image">
+          <div className={cx(product.image, macbook.image)}>
             <img
-              srcSet={`${macbookpro} 1x, ${macbookpro2x} 2x`}
-              src={macbookpro}
+              srcSet={`${imageUrl} 1x, ${image2xUrl} 2x`}
+              src={imageUrl}
               alt="MacBook Pro"
             />
           </div>
         </div>
-        <div className="product-extra">
-          <div className="product-price">
+        <div className={cx(product.extra, macbook.extra)}>
+          <div className={cx(product.price, macbook.price)}>
             <Link to="">Buy now&nbsp;&gt;</Link>
           </div>
-          <div className="mac-pictures"></div>
-          <form className="mac-newsletter-form">
-            <div className="form-title">Subscribe Now</div>
-            <div className="form-content">
+          <div className={macbook.pictures}></div>
+          <form className={macbook.form}>
+            <div className={macbook.formTitle}>Subscribe Now</div>
+            <div className={macbook.formContent}>
               <input placeholder="Enter the email address" required />
               <button type="submit">Subscribe</button>
             </div>
