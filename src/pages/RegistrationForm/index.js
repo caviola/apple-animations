@@ -7,8 +7,8 @@ import styles from "./styles.module.scss";
 
 const requiredFieldMessage = "This field is required";
 
-const RegistrationForm = ({ history }) => {
-  const validate = (values) => {
+function RegistrationForm({ history }) {
+  function validate(values) {
     let errors = {};
 
     if (!values.firstname) {
@@ -32,12 +32,12 @@ const RegistrationForm = ({ history }) => {
     }
 
     return errors;
-  };
+  }
 
-  const submit = (values) => {
+  function submit(values) {
     // TODO: call back-end API and redirect on success.
     history.push("/");
-  };
+  }
 
   // TODO: note we can extract .form-field into a reusable component FormField
   // that takes care of 'required' validation and showing the error if any.
@@ -103,6 +103,6 @@ const RegistrationForm = ({ history }) => {
       </Formik>
     </div>
   );
-};
+}
 
 export default RegistrationForm;

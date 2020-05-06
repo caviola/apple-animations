@@ -7,7 +7,7 @@ import iphone from "./styles.module.scss";
 import image from "../../../images/iphone-big.png";
 import image2xUrl from "../../../images/iphone-big@2x.png";
 
-const IPhone = () => {
+function IPhone() {
   return (
     <ProductPage>
       <div className={product.detailsContainer}>
@@ -40,6 +40,6 @@ const IPhone = () => {
       </div>
     </ProductPage>
   );
-};
+}
 
 export default IPhone;

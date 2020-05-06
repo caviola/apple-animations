@@ -9,14 +9,14 @@ import styles from "./styles.module.scss";
 const requiredFieldMessage = "This field is required";
 const initialPage = "/iphone";
 
-const Login = ({ history, location }) => {
+function Login({ history, location }) {
   // Where to go after successful login.
   const destination =
     location.state && location.state.referer
       ? location.state.referer
       : initialPage;
 
-  const validate = (values) => {
+  function validate(values) {
     let errors = {};
 
     if (!values.email) {
@@ -37,9 +37,9 @@ const Login = ({ history, location }) => {
     }
 
     return errors;
-  };
+  }
 
-  const submit = (values, { setSubmitting }) => {
+  function submit(values, { setSubmitting }) {
     // Call login API and on success redirect to referer or initial page.
     login(values.email, values.pwd).then(() => {
       history.push(destination, {
@@ -48,7 +48,7 @@ const Login = ({ history, location }) => {
         transitionClass: "scale-down",
       });
     });
-  };
+  }
 
   const user = useAuthenticatedUser();
 
@@ -102,6 +102,6 @@ const Login = ({ history, location }) => {
       </Formik>
     </div>
   );
-};
+}
 
 export default Login;

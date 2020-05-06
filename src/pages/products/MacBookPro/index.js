@@ -7,7 +7,7 @@ import macbook from "./styles.module.scss";
 import imageUrl from "../../../images/macbookpro-big.png";
 import image2xUrl from "../../../images/macbookpro-big@2x.png";
 
-const MacBookPro = () => {
+function MacBookPro() {
   return (
     <ProductPage>
       <div className={product.detailsContainer}>
@@ -53,6 +53,6 @@ const MacBookPro = () => {
       </div>
     </ProductPage>
   );
-};
+}
 
 export default MacBookPro;

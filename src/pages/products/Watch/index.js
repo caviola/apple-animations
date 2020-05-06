@@ -7,7 +7,7 @@ import watch from "./styles.module.scss";
 import imageUrl from "../../../images/black-watch-big.png";
 import image2xUrl from "../../../images/black-watch-big@2x.png";
 
-const Watch = () => {
+function Watch() {
   return (
     <ProductPage>
       <div className={product.detailsContainer}>
@@ -41,6 +41,6 @@ const Watch = () => {
       </div>
     </ProductPage>
   );
-};
+}
 
 export default Watch;

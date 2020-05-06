@@ -13,11 +13,15 @@ const transitionDuration = 700; // milliseconds
 
 // When a page is about to be transitioned into view, we add a class
 // so that page-specific animations are setup.
-const cssTransitionEnter = (elem) => elem && elem.classList.add("appear");
+function cssTransitionEnter(elem) {
+  return elem && elem.classList.add("appear");
+}
 
 // As soon as page starts transitioning into view, we remove the class
 // so that entering animations begin.
-const cssTransitionEntering = (elem) => elem && elem.classList.remove("appear");
+function cssTransitionEntering(elem) {
+  return elem && elem.classList.remove("appear");
+}
 
 /**
  * Given origin/destination paths, returns which class name to use for CSSTransition.
@@ -40,7 +44,7 @@ const cssTransitionEntering = (elem) => elem && elem.classList.remove("appear");
  * @param {string} fromPath
  * @param {string} toLocation
  */
-const getTransitionClassNames = (fromPath, toLocation) => {
+function getTransitionClassNames(fromPath, toLocation) {
   if (toLocation.state.transitionClass) {
     return toLocation.state.transitionClass;
   }
@@ -54,12 +58,12 @@ const getTransitionClassNames = (fromPath, toLocation) => {
   } else {
     return "cross-fade";
   }
-};
+}
 
 const AppRoutes = withRouter(({ location }) => {
   const referer = location.state && location.state.referer;
 
-  const transitionGroupChildFactory = (child) => {
+  function transitionGroupChildFactory(child) {
     if (
       referer !== location.pathname &&
       location.state &&
@@ -84,7 +88,7 @@ const AppRoutes = withRouter(({ location }) => {
         onEntering: null,
       });
     }
-  };
+  }
 
   return (
     <TransitionGroup
@@ -104,12 +108,12 @@ const AppRoutes = withRouter(({ location }) => {
   );
 });
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <AppRoutes />
     </BrowserRouter>
   );
-};
+}
 
 export default App;

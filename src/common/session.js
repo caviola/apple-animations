@@ -10,7 +10,7 @@ const loginLatency = 1000; // milliseconds
  * @param {string} email
  * @param {string} pwd
  */
-const login = (email, pwd) => {
+function login(email, pwd) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const user = {
@@ -22,14 +22,14 @@ const login = (email, pwd) => {
       resolve(user);
     }, loginLatency);
   });
-};
+}
 
 /**
  * Fake hook that returns the user in sessionStorage.
  */
-const useAuthenticatedUser = () => {
+function useAuthenticatedUser() {
   return JSON.parse(global.sessionStorage.getItem("user"));
-};
+}
 
 /**
  * Renders a route if user is authenticated.
@@ -38,7 +38,7 @@ const useAuthenticatedUser = () => {
  *
  * @param {object} props
  */
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+function ProtectedRoute({ component: Component, ...rest }) {
   const user = useAuthenticatedUser();
 
   return (
@@ -58,6 +58,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       }
     />
   );
-};
+}
 
 export { ProtectedRoute, useAuthenticatedUser, login };

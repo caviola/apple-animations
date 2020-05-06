@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cx from "classnames";
 import styles from "./styles.module.scss";
 
-const PageHeader = ({ activePath }) => {
+function PageHeader({ activePath }) {
   return (
     <div className={styles.header}>
       <Link to="" className={styles.logo} title="Apple logo"></Link>
@@ -60,6 +60,6 @@ const PageHeader = ({ activePath }) => {
       </nav>
     </div>
   );
-};
+}
 
 export default PageHeader;
