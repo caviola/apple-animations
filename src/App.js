@@ -60,7 +60,7 @@ function getTransitionClassNames(fromPath, toLocation) {
   }
 }
 
-const AppRoutes = withRouter(({ location }) => {
+const AppRoutes = withRouter(function ({ location }) {
   const referer = location.state && location.state.referer;
 
   function transitionGroupChildFactory(child) {
