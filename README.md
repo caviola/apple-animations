@@ -1,4 +1,4 @@
-Test project showcasing page transitions/animations as per demo video.
+Demo SPA showcasing page transitions/animations.
 
 ## Installation
 
@@ -23,9 +23,9 @@ and visit [http://localhost:3000](http://localhost:3000) in your browser.
 ## Implemented features
 
 - Registration form with with basic required-field validation. After clicking *Register* it will simply redirect to login page.
-- Login form with simulated *invalid credentials* message. To be able to 'login' use the following hard-coded credentials:
+- Login form with simulated *invalid credentials* message. To make login fail, use the following hard-coded credentials:
 
-    email: example@example.com
+    email: invalid@example.com
     pwd: 123456
 
 - Product pages (iPhone, MacBook Pro and Watch) showcasing transitions between pages and page-specific animations. All animations are implemented with CSS3.
@@ -37,10 +37,10 @@ and visit [http://localhost:3000](http://localhost:3000) in your browser.
 - React Router
 - Formik
 - React Transition Group
+- CSS Modules
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Assumptions
 
 - The layout is for desktop only.
-- Not all UI elements were implemented, eg: the carousel change between white and black Watch.
