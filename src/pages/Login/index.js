@@ -31,7 +31,8 @@ function Login({ history, location }) {
     if (
       values.email &&
       values.pwd &&
-      (values.email !== "example@example.com" || values.pwd !== "123456")
+      values.email === "invalid@example.com" &&
+      values.pwd === "123456"
     ) {
       errors.email = errors.pwd = "Invalid credentials.";
     }
