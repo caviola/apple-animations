@@ -94,9 +94,38 @@ function Login({ history, location }) {
                   Login
                 </button>
               </div>
-              <p>
-                Don't have an account? <Link to="/register">Register now</Link>
-              </p>
+              <div>
+                <p>
+                  Don't have an account?{" "}
+                  <Link to="/register">Register now</Link>
+                </p>
+                <p>
+                  This demo SPA showcases transitions between pages and element
+                  animations within each page, eg: when clicking a product page
+                  link in the header, the destination page will be animated in
+                  and the old page will be animated out. Besides, some elements
+                  of the appearing page will be animated as the enter the
+                  screen.
+                </p>
+                <p>
+                  <strong>Use any email and password to login. </strong>
+                  Use email <i>invalid@example.com</i> and password{" "}
+                  <i>123456</i> to simulated failed login.
+                </p>
+                <p>
+                  This app uses with React, React Router, SASS, CSS Modules,
+                  Formik, CSS Transition Group and CSS3 transitions and source
+                  code can be found at: <br />
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://github.com/caviola/apple-animations"
+                  >
+                    https://github.com/caviola/apple-animations
+                  </a>
+                  .
+                </p>
+              </div>
             </Form>
           );
         }}
