@@ -1,15 +1,17 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PageHeader from "../PageHeader";
 import styles from "./styles.module.scss";
 
-const ProductPage = withRouter(({ match, children }) => {
+const ProductPage = ({ children }) => {
+  const location = useLocation();
+
   return (
     <div className={styles.page}>
-      <PageHeader activePath={match.path} />
+      <PageHeader activePath={location.pathname} />
       {children}
     </div>
   );
-});
+};
 
 export default ProductPage;

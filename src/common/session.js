@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const loginLatency = 1000; // milliseconds
 
@@ -32,32 +32,21 @@ function useAuthenticatedUser() {
 }
 
 /**
- * Renders a route if user is authenticated.
+ * Renders 'children' if user is authenticated.
  * Otherwise redirect to login page with current route as referer
  * so that after login we are redirected to this route again.
- *
- * @param {object} props
  */
-function ProtectedRoute({ component: Component, ...rest }) {
+function ProtectedRoute({ children }) {
   const user = useAuthenticatedUser();
+  const location = useLocation();
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        user ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { referer: props.location.pathname },
-            }}
-          />
-        )
-      }
-    />
-  );
+  return user ? children :
+    <Navigate
+      to={{
+        pathname: "/",
+        state: { referer: location.pathname },
+      }}
+    />;
 }
 
 export { ProtectedRoute, useAuthenticatedUser, login };
