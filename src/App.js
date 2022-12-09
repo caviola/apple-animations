@@ -1,5 +1,6 @@
 import React, { cloneElement } from "react";
-import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./App.module.scss";
 import IPhone from "./pages/products/IPhone";
@@ -60,7 +61,8 @@ function getTransitionClassNames(fromPath, toLocation) {
   }
 }
 
-const AppRoutes = withRouter(({ location }) => {
+const AppRoutes = () => {
+  const location = useLocation();
   const referer = location.state && location.state.referer;
 
   function transitionGroupChildFactory(child) {
@@ -96,17 +98,33 @@ const AppRoutes = withRouter(({ location }) => {
       className={styles.container}
     >
       <CSSTransition key={location.key} timeout={0}>
-        <Switch location={location}>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/register" component={RegistrationForm} />
-          <ProtectedRoute exact path="/iphone" component={IPhone} />
-          <ProtectedRoute exact path="/macbook-pro" component={MacBookPro} />
-          <ProtectedRoute exact path="/watch" component={Watch} />
-        </Switch>
+        <Routes location={location}>
+          <Route exact path="/" element={
+            <Login />
+          } />
+          <Route exact path="/register" element={
+            <RegistrationForm />
+          } />
+          <Route exact path="/iphone" element={
+            <ProtectedRoute>
+              <IPhone />
+            </ProtectedRoute>
+          } />
+          <Route exact path="/macbook-pro" element={
+            <ProtectedRoute>
+              <MacBookPro />
+            </ProtectedRoute>
+          } />
+          <Route exact path="/watch" element={
+            <ProtectedRoute>
+              <Watch />
+            </ProtectedRoute>
+          } />
+        </Routes>
       </CSSTransition>
     </TransitionGroup>
   );
-});
+};
 
 function App() {
   return (
