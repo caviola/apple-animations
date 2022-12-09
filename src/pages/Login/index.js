@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
 import { login, useAuthenticatedUser } from "../../common/session";
 import form from "../../common/forms.module.scss";
@@ -9,7 +9,10 @@ import styles from "./styles.module.scss";
 const requiredFieldMessage = "This field is required";
 const initialPage = "/iphone";
 
-function Login({ history, location }) {
+function Login() {
+  const location = useLocation();
+  let navigate = useNavigate();
+
   // Where to go after successful login.
   const destination =
     location.state && location.state.referer
@@ -40,13 +43,15 @@ function Login({ history, location }) {
     return errors;
   }
 
-  function submit(values, { setSubmitting }) {
+  function submit(values) {
     // Call login API and on success redirect to referer or initial page.
     login(values.email, values.pwd).then(() => {
-      history.push(destination, {
-        referer: location.pathname,
-        animate: true,
-        transitionClass: "scale-down",
+      navigate(destination, {
+        state: {
+          referer: location.pathname,
+          animate: true,
+          transitionClass: "scale-down"
+        }
       });
     });
   }
@@ -54,13 +59,11 @@ function Login({ history, location }) {
   const user = useAuthenticatedUser();
 
   return user ? (
-    <Redirect
-      to={{
-        pathname: destination,
-        state: {
-          animate: true,
-          transitionClass: "scale-down",
-        },
+    <Navigate
+      to={destination}
+      state={{
+        animate: true,
+        transitionClass: "scale-down"
       }}
     />
   ) : (

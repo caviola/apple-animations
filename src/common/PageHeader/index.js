@@ -11,12 +11,10 @@ function PageHeader({ activePath }) {
         <ul>
           <li>
             <Link
-              to={{
-                pathname: "/iphone",
-                state: {
-                  referer: activePath,
-                  animate: true,
-                },
+              to="/iphone"
+              state={{
+                referer: activePath,
+                animate: true
               }}
               className={cx({ [styles.active]: activePath === "/iphone" })}
             >
@@ -25,12 +23,10 @@ function PageHeader({ activePath }) {
           </li>
           <li>
             <Link
-              to={{
-                pathname: "/macbook-pro",
-                state: {
-                  referer: activePath,
-                  animate: true,
-                },
+              to="/macbook-pro"
+              state={{
+                referer: activePath,
+                animate: true
               }}
               className={cx({ [styles.active]: activePath === "/macbook-pro" })}
             >
@@ -39,12 +35,10 @@ function PageHeader({ activePath }) {
           </li>
           <li>
             <Link
-              to={{
-                pathname: "/watch",
-                state: {
-                  referer: activePath,
-                  animate: true,
-                },
+              to="/watch"
+              state={{
+                referer: activePath,
+                animate: true
               }}
               className={cx({ [styles.active]: activePath === "/watch" })}
             >
