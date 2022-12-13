@@ -5,7 +5,7 @@ import cx from "classnames";
 import form from "../../common/forms.module.scss";
 import styles from "./styles.module.scss";
 
-const requiredFieldMessage = "This field is required";
+const requiredFieldMessage = "This field is required.";
 
 function RegistrationForm({ history }) {
   function validate(values) {

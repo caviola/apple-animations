@@ -6,7 +6,7 @@ import { login, useAuthenticatedUser } from "../../common/session";
 import form from "../../common/forms.module.scss";
 import styles from "./styles.module.scss";
 
-const requiredFieldMessage = "This field is required";
+const requiredFieldMessage = "This field is required.";
 const initialPage = "/iphone";
 
 function Login() {
@@ -83,7 +83,7 @@ function Login() {
             <Form className={cx(form.form, styles.form)}>
               <div className={form.title}>Login</div>
               <div className={form.field}>
-                <Field name="email" type="email" placeholder="Email" />
+                <Field name="email" type="text" placeholder="Email" />
                 {errors.email && (
                   <div className={form.error}>{errors.email}</div>
                 )}
