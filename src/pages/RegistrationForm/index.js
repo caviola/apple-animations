@@ -1,13 +1,15 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cx from "classnames";
 import form from "../../common/forms.module.scss";
 import styles from "./styles.module.scss";
 
 const requiredFieldMessage = "This field is required.";
 
-function RegistrationForm({ history }) {
+function RegistrationForm() {
+  let navigate = useNavigate();
+
   function validate(values) {
     let errors = {};
 
@@ -36,7 +38,7 @@ function RegistrationForm({ history }) {
 
   function submit(values) {
     // TODO: call back-end API and redirect on success.
-    history.push("/");
+    navigate("/");
   }
 
   // TODO: note we can extract .form-field into a reusable component FormField
@@ -57,7 +59,7 @@ function RegistrationForm({ history }) {
         onSubmit={submit}
         validate={validate}
       >
-        {({ errors, values }) => {
+        {({ errors }) => {
           return (
             <Form className={cx(form.form, styles.form)}>
               <div className={form.title}>Create account</div>
