@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "apple_animations",
+  "project_id": "ebf72768-802b-4006-8195-8419db924dce"
+}
