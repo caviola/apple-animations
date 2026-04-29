@@ -18,7 +18,7 @@ Now start the app in development mode with:
 $ yarn start
 ```
 
-and visit [http://localhost:3000](http://localhost:3000) in your browser.
+and visit [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Implemented features
 
@@ -39,7 +39,7 @@ and visit [http://localhost:3000](http://localhost:3000) in your browser.
 - React Transition Group
 - CSS Modules
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses [Vite](https://vite.dev/) with React.
 
 ## Assumptions
 

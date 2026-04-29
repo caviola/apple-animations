@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Formik, Form, Field } from "formik";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
 import { login, useAuthenticatedUser } from "../../common/session";
 import form from "../../common/forms.module.scss";
@@ -12,6 +12,7 @@ const initialPage = "/iphone";
 function Login() {
   const location = useLocation();
   let navigate = useNavigate();
+  const hasRedirected = useRef(false);
 
   // Where to go after successful login.
   const destination =
@@ -21,14 +22,6 @@ function Login() {
 
   function validate(values) {
     let errors = {};
-
-    if (!values.email) {
-      errors.email = requiredFieldMessage;
-    }
-
-    if (!values.pwd) {
-      errors.pwd = requiredFieldMessage;
-    }
 
     // TODO: simulate invalid credentials
     if (
@@ -58,15 +51,22 @@ function Login() {
 
   const user = useAuthenticatedUser();
 
-  return user ? (
-    <Navigate
-      to={destination}
-      state={{
+  useEffect(() => {
+    if (!user || hasRedirected.current) {
+      return;
+    }
+
+    hasRedirected.current = true;
+    navigate(destination, {
+      replace: true,
+      state: {
         animate: true,
         transitionClass: "scale-down"
-      }}
-    />
-  ) : (
+      }
+    });
+  }, [destination, navigate, user]);
+
+  return user ? null : (
     <div className={styles.container}>
       <Formik
         initialValues={{
@@ -111,7 +111,7 @@ function Login() {
                   screen.
                 </p>
                 <p>
-                  <strong>Use any email and password to login. </strong>
+                  <strong>Use any email/password to login or leave blank. </strong>
                   Use email <i>invalid@example.com</i> and password{" "}
                   <i>123456</i> to simulated failed login.
                 </p>
