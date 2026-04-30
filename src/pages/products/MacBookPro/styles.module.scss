@@ -1,3 +1,5 @@
+@use "../../../common/variables" as *;
+
 .details {
   background: #000;
 }
@@ -27,7 +29,7 @@
       font-size: 20px;
     }
 
-    & + li {
+    &+li {
       margin-left: 60px;
     }
   }
@@ -104,11 +106,11 @@
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
-  only screen and (min--moz-device-pixel-ratio: 1.25),
-  only screen and (-o-min-device-pixel-ratio: 1.25/1),
-  only screen and (min-device-pixel-ratio: 1.25),
-  only screen and (min-resolution: 200dpi),
-  only screen and (min-resolution: 1.25dppx) {
+only screen and (min--moz-device-pixel-ratio: 1.25),
+only screen and (-o-min-device-pixel-ratio: 1.25/1),
+only screen and (min-device-pixel-ratio: 1.25),
+only screen and (min-resolution: 200dpi),
+only screen and (min-resolution: 1.25dppx) {
   .pictures {
     background-image: url(../../../images/macbook-pictures-big@2x.png);
   }
@@ -122,11 +124,12 @@
 .pictures,
 .form,
 .image {
-  transition: 0.7s all;
+  transition: $page-transition-duration transform, $page-transition-duration opacity;
   transition-delay: 0.5s;
 }
 
-:global(.appear) {
+:global([class$="-enter"]) {
+
   .name,
   .title {
     transform: translateX(-50px);

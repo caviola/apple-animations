@@ -35,7 +35,7 @@ function Watch() {
         <div className={cx(product.extra, watch.extra)}>
           <div className={cx(product.price, watch.price)}>
             From $799
-            <Link to="">Buy now&nbsp;&gt;</Link>
+            <a href="#">Buy now&nbsp;&gt;</a>
           </div>
         </div>
       </div>

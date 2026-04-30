@@ -46,9 +46,9 @@ function PageHeader({ activePath }) {
             </Link>
           </li>
           <li>
-            <Link to="" className={styles.notify}>
+            <a href="#" className={styles.notify}>
               Notify me
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>

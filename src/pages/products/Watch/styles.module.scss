@@ -26,12 +26,12 @@
 // 'appear' transitions.
 .details,
 .extra {
-  transition: 0.8s all;
+  transition: 0.7s transform, 0.7s opacity;
   transition-delay: 0.3s;
   transition-timing-function: ease-in-out;
 }
 
-:global(.appear) {
+:global([class$="-enter"]) {
   .details {
     transform: translateX(-50px);
     opacity: 0;

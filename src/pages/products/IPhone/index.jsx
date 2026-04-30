@@ -34,7 +34,7 @@ function IPhone() {
         <div className={product.extra}>
           <div className={cx(product.price, iphone.price)}>
             From $799
-            <Link to="">Buy now&nbsp;&gt;</Link>
+            <a href="#">Buy now&nbsp;&gt;</a>
           </div>
         </div>
       </div>

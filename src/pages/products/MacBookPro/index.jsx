@@ -39,7 +39,7 @@ function MacBookPro() {
         </div>
         <div className={cx(product.extra, macbook.extra)}>
           <div className={cx(product.price, macbook.price)}>
-            <Link to="">Buy now&nbsp;&gt;</Link>
+            <a href="#">Buy now&nbsp;&gt;</a>
           </div>
           <div className={macbook.pictures}></div>
           <form className={macbook.form}>

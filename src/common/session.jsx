@@ -11,13 +11,13 @@ const loginLatency = 1000; // milliseconds
  * @param {string} pwd
  */
 function login(email, pwd) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       const user = {
         email,
       };
 
-      global.sessionStorage.setItem("user", JSON.stringify(user));
+      window.sessionStorage.setItem("user", JSON.stringify(user));
 
       resolve(user);
     }, loginLatency);
@@ -28,7 +28,7 @@ function login(email, pwd) {
  * Fake hook that returns the user in sessionStorage.
  */
 function useAuthenticatedUser() {
-  return JSON.parse(global.sessionStorage.getItem("user"));
+  return JSON.parse(window.sessionStorage.getItem("user"));
 }
 
 /**
@@ -42,10 +42,8 @@ function ProtectedRoute({ children }) {
 
   return user ? children :
     <Navigate
-      to={{
-        pathname: "/",
-        state: { referer: location.pathname },
-      }}
+      to="/"
+      state={{ referer: location.pathname }}
     />;
 }
 

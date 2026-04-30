@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Formik, Form, Field } from "formik";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
 import { login, useAuthenticatedUser } from "../../common/session";
-import form from "../../common/forms.module.scss";
-import styles from "./styles.module.scss";
 
-const requiredFieldMessage = "This field is required.";
 const initialPage = "/iphone";
 
 function Login() {
   const location = useLocation();
   let navigate = useNavigate();
+  const hasRedirected = useRef(false);
 
   // Where to go after successful login.
   const destination =
@@ -21,14 +19,6 @@ function Login() {
 
   function validate(values) {
     let errors = {};
-
-    if (!values.email) {
-      errors.email = requiredFieldMessage;
-    }
-
-    if (!values.pwd) {
-      errors.pwd = requiredFieldMessage;
-    }
 
     // TODO: simulate invalid credentials
     if (
@@ -58,16 +48,23 @@ function Login() {
 
   const user = useAuthenticatedUser();
 
-  return user ? (
-    <Navigate
-      to={destination}
-      state={{
+  useEffect(() => {
+    if (!user || hasRedirected.current) {
+      return;
+    }
+
+    hasRedirected.current = true;
+    navigate(destination, {
+      replace: true,
+      state: {
         animate: true,
         transitionClass: "scale-down"
-      }}
-    />
-  ) : (
-    <div className={styles.container}>
+      }
+    });
+  }, [destination, navigate, user]);
+
+  return user ? null : (
+    <div className="md:w-1/2 lg:w-1/3 max-w-10/12 mx-auto mt-20">
       <Formik
         initialValues={{
           email: "",
@@ -80,29 +77,29 @@ function Login() {
       >
         {({ errors, isSubmitting }) => {
           return (
-            <Form className={cx(form.form, styles.form)}>
-              <div className={form.title}>Login</div>
-              <div className={form.field}>
-                <Field name="email" type="text" placeholder="Email" />
+            <Form>
+              <h2 className="font-bold text-2xl mb-10 text-center text-black">Login</h2>
+              <div className="mb-4">
+                <Field name="email" type="text" placeholder="Email" className="border border-gray-300 rounded-md p-3 w-full" />
                 {errors.email && (
-                  <div className={form.error}>{errors.email}</div>
+                  <div className="text-red-500 text-sm mt-1">{errors.email}</div>
                 )}
               </div>
-              <div className={form.field}>
-                <Field name="pwd" type="password" placeholder="Password" />
-                {errors.pwd && <div className={form.error}>{errors.pwd}</div>}
+              <div className="mb-4">
+                <Field name="pwd" type="password" placeholder="Password" className="border border-gray-300 rounded-md p-3 w-full" />
+                {errors.pwd && <div className="text-red-500 text-sm mt-1">{errors.pwd}</div>}
               </div>
-              <div className={form.actions}>
-                <button type="submit" disabled={isSubmitting}>
+              <div className="mt-10">
+                <button type="submit" disabled={isSubmitting} className="border border-blue-600 bg-blue-500 hover:bg-blue-600 text-white px-4 py-4 rounded-md w-full">
                   Login
                 </button>
               </div>
-              <div>
-                <p>
+              <div className="w-10/12 mx-auto mt-4 text-center text-sm text-gray-800">
+                <p className="mb-4">
                   Don't have an account?{" "}
-                  <Link to="/register">Register now</Link>
+                  <Link to="/register" className="text-blue-500 hover:underline">Register now</Link>
                 </p>
-                <p>
+                <p className="mb-4">
                   This demo SPA showcases transitions between pages and element
                   animations within each page, eg: when clicking a product page
                   link in the header, the destination page will be animated in
@@ -110,16 +107,16 @@ function Login() {
                   of the appearing page will be animated as the enter the
                   screen.
                 </p>
-                <p>
-                  <strong>Use any email and password to login. </strong>
+                <p className="mb-4">
+                  <strong>Use any email/password to login or leave blank. </strong>
                   Use email <i>invalid@example.com</i> and password{" "}
                   <i>123456</i> to simulated failed login.
                 </p>
-                <p>
+                <p className="mb-4">
                   This app uses with React, React Router, SASS, CSS Modules,
                   Formik, CSS Transition Group and CSS3 transitions and source
                   code can be found at: <br />
-                  <a
+                  <a className="text-blue-500 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://github.com/caviola/apple-animations"
