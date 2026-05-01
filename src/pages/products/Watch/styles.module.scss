@@ -1,32 +1,8 @@
-.details {
-  background: linear-gradient(90deg, #f2f2f2 0%, #ffffff00 50%) 0% 0% no-repeat;
-}
+@use "../../../common/variables" as *;
 
-.name {
-  color: #ff2d55;
-}
-
-.title {
-  color: #000;
-}
-
-.description {
-  color: #999999;
-}
-
-.price a {
-  color: #ff2d55;
-}
-
-.image img {
-  width: 600px;
-  top: 60px;
-}
-
-// 'appear' transitions.
 .details,
 .extra {
-  transition: 0.7s transform, 0.7s opacity;
+  transition: $page-transition-duration transform, $page-transition-duration opacity;
   transition-delay: 0.3s;
   transition-timing-function: ease-in-out;
 }

@@ -1,7 +1,7 @@
 import React, { cloneElement, createRef, useCallback, useRef } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import styles from "./App.module.scss";
+import "./App.module.scss";
 import IPhone from "./pages/products/IPhone";
 import MacBookPro from "./pages/products/MacBookPro";
 import Watch from "./pages/products/Watch";
@@ -86,9 +86,9 @@ const AppRoutes = () => {
   }, [location]);
 
   return (
-    <TransitionGroup className={styles.container} childFactory={transitionGroupChildFactory}>
+    <TransitionGroup className="min-h-screen relative overflow-x-hidden overflow-y-scroll" childFactory={transitionGroupChildFactory}>
       <CSSTransition key={transitionKey} nodeRef={nodeRef}>
-        <div ref={nodeRef} className={styles.page}>
+        <div ref={nodeRef} className="absolute inset-0 w-full min-h-screen bg-white">
           <Routes location={location}>
             <Route path="/" element={
               <Login />

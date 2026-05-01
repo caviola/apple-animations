@@ -1,4 +1,9 @@
-Demo SPA showcasing page transitions/animations.
+Example SPA showcasing page transitions/animations demonstrating:
+
+- Different page transitions depending on origin/destination pages.
+- Animating in-page elements when they enter/exit the screen.
+- Use both TailwindCSS utilities for style/layout and custom CSS for in-page transitions.
+- Use advanced TransitionGroup techniques (eg: childFactory).
 
 ## Installation
 
@@ -38,6 +43,7 @@ and visit [http://localhost:5173](http://localhost:5173) in your browser.
 - Formik
 - React Transition Group
 - CSS Modules
+- TailwindCSS
 
 This project uses [Vite](https://vite.dev/) with React.
 

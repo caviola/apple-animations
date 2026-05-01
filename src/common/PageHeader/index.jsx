@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cx from "classnames";
-import styles from "./styles.module.scss";
 
 function PageHeader({ activePath }) {
   return (
-    <div className={styles.header}>
-      <Link to="" className={styles.logo} title="Apple logo"></Link>
-      <nav>
-        <ul>
+    <div className="flex items-center pr-28">
+      <Link to="" className="inline-block h-24 w-24 bg-black" title="Apple logo"></Link>
+      <nav className="ml-auto">
+        <ul className="flex items-center">
           <li>
             <Link
               to="/iphone"
@@ -16,37 +14,37 @@ function PageHeader({ activePath }) {
                 referer: activePath,
                 animate: true
               }}
-              className={cx({ [styles.active]: activePath === "/iphone" })}
+              className={activePath === "/iphone" ? "cursor-pointer whitespace-nowrap font-bold text-black" : "cursor-pointer whitespace-nowrap text-gray-500"}
             >
               iPhone
             </Link>
           </li>
-          <li>
+          <li className="ml-12">
             <Link
               to="/macbook-pro"
               state={{
                 referer: activePath,
                 animate: true
               }}
-              className={cx({ [styles.active]: activePath === "/macbook-pro" })}
+              className={activePath === "/macbook-pro" ? "cursor-pointer whitespace-nowrap font-bold text-black" : "cursor-pointer whitespace-nowrap text-gray-500"}
             >
               MacBook Pro
             </Link>
           </li>
-          <li>
+          <li className="ml-12">
             <Link
               to="/watch"
               state={{
                 referer: activePath,
                 animate: true
               }}
-              className={cx({ [styles.active]: activePath === "/watch" })}
+              className={activePath === "/watch" ? "cursor-pointer whitespace-nowrap font-bold text-black" : "cursor-pointer whitespace-nowrap text-gray-500"}
             >
               Watch
             </Link>
           </li>
-          <li>
-            <a href="#" className={styles.notify}>
+          <li className="ml-12">
+            <a href="#" className="inline-block rounded-full border-none bg-sky-400 px-6 py-2 text-inherit">
               Notify me
             </a>
           </li>

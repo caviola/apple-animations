@@ -1,40 +1,39 @@
 import React from "react";
 import ProductPage from "../../../common/ProductPage";
-import { Link } from "react-router-dom";
-import cx from "classnames";
-import product from "../../../common/product.module.scss";
-import iphone from "./styles.module.scss";
 import image from "../../../images/iphone-big.png";
 import image2xUrl from "../../../images/iphone-big@2x.png";
 
 function IPhone() {
   return (
     <ProductPage>
-      <div className={product.detailsContainer}>
-        <div className={product.details}>
-          <div className={cx(product.textContent, iphone.textContent)}>
-            <div className={cx(product.name, iphone.name)}>iPhone</div>
-            <div className={cx(product.title, iphone.title)}>
+      <div className="pl-24">
+        <div className="flex">
+          <div className="w-7/12 bg-linear-to-r from-gray-100 to-transparent px-24 py-20">
+            <div className="mb-4 text-3xl leading-tight font-bold text-red-500">iPhone</div>
+            <div className="mb-16 text-8xl leading-none font-bold text-black">
               The ultimate <br />
               iPhone
             </div>
-            <div className={cx(product.description, iphone.description)}>
+            <div className="text-2xl leading-relaxed text-gray-400">
               The future is here. Join the iPhone Upgrade <br />
               Program to get the latest iPhone - NOW!
             </div>
           </div>
-          <div className={product.image}>
+          <div className="relative w-5/12">
             <img
+              className="absolute"
               srcSet={`${image} 1x, ${image2xUrl} 2x`}
               src={image}
               alt="iPhone"
             />
           </div>
         </div>
-        <div className={product.extra}>
-          <div className={cx(product.price, iphone.price)}>
+        <div className="px-24 py-20">
+          <div className="text-5xl font-bold text-gray-300">
             From $799
-            <a href="#">Buy now&nbsp;&gt;</a>
+            <a href="#" className="mt-2 block text-xl font-semibold text-red-500 no-underline">
+              Buy now&nbsp;&gt;
+            </a>
           </div>
         </div>
       </div>
