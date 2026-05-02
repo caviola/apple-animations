@@ -1,7 +1,7 @@
-import React from "react";
-import ProductPage from "../../../common/ProductPage";
-import image from "../../../images/iphone-big.png";
-import image2xUrl from "../../../images/iphone-big@2x.png";
+import React from 'react';
+import ProductPage from '../../../common/ProductPage';
+import image from '../../../images/iphone-big.png';
+import image2xUrl from '../../../images/iphone-big@2x.png';
 
 function IPhone() {
   return (

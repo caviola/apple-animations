@@ -1,8 +1,8 @@
-import React from "react";
-import ProductPage from "../../../common/ProductPage";
-import watch from "./styles.module.scss";
-import imageUrl from "../../../images/black-watch-big.png";
-import image2xUrl from "../../../images/black-watch-big@2x.png";
+import React from 'react';
+import ProductPage from '../../../common/ProductPage';
+import watch from './styles.module.scss';
+import imageUrl from '../../../images/black-watch-big.png';
+import image2xUrl from '../../../images/black-watch-big@2x.png';
 
 function Watch() {
   return (

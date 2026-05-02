@@ -27,11 +27,11 @@ and visit [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Implemented features
 
-- Registration form with with basic required-field validation. After clicking *Register* it will simply redirect to login page.
-- Login form with simulated *invalid credentials* message. To make login fail, use the following hard-coded credentials:
+- Registration form with with basic required-field validation. After clicking _Register_ it will simply redirect to login page.
+- Login form with simulated _invalid credentials_ message. To make login fail, use the following hard-coded credentials:
 
-    email: invalid@example.com
-    pwd: 123456
+  email: invalid@example.com
+  pwd: 123456
 
 - Product pages (iPhone, MacBook Pro and Watch) showcasing transitions between pages and page-specific animations. All animations are implemented with CSS3.
 - After login, 'session' data is kept in session storage so it's lost after browser/tab is closed.

@@ -1,9 +1,8 @@
-import React from "react";
-import { Formik, Form, Field } from "formik";
-import { Link, useNavigate } from "react-router-dom";
-import cx from "classnames";
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
+import { Link, useNavigate } from 'react-router-dom';
 
-const MESSAGE_REQUIRED_FIELD = "This field is required.";
+const MESSAGE_REQUIRED_FIELD = 'This field is required.';
 
 function RegistrationForm() {
   let navigate = useNavigate();
@@ -24,7 +23,7 @@ function RegistrationForm() {
     }
 
     if (values.pwd1.length < 6 || values.pwd2.length < 6) {
-      errors.pwd1 = errors.pwd2 = "Password must have at least 6 characters.";
+      errors.pwd1 = errors.pwd2 = 'Password must have at least 6 characters.';
     }
 
     if (values.pwd1 !== values.pwd2) {
@@ -34,9 +33,10 @@ function RegistrationForm() {
     return errors;
   }
 
+  // eslint-disable-next-line no-unused-vars
   function submit(values) {
     // TODO: call back-end API and redirect on success.
-    navigate("/");
+    navigate('/');
   }
 
   // TODO: note we can extract .form-field into a reusable component FormField
@@ -46,11 +46,11 @@ function RegistrationForm() {
     <div className="md:w-1/2 lg:w-1/3 max-w-10/12 mx-auto mt-20">
       <Formik
         initialValues={{
-          firstname: "",
-          lastname: "",
-          email: "",
-          pwd1: "",
-          pwd2: "",
+          firstname: '',
+          lastname: '',
+          email: '',
+          pwd1: '',
+          pwd2: '',
         }}
         validateOnBlur={false}
         validateOnChange={false}
@@ -62,25 +62,41 @@ function RegistrationForm() {
             <Form>
               <h2 className="font-bold text-2xl mb-10 text-center text-black">Create account</h2>
               <div className="mb-4">
-                <Field name="firstname" placeholder="First name" className="border border-gray-300 rounded-md p-3 w-full" />
+                <Field
+                  name="firstname"
+                  placeholder="First name"
+                  className="border border-gray-300 rounded-md p-3 w-full"
+                />
                 {errors.firstname && (
                   <div className="text-red-500 text-sm mt-1">{errors.firstname}</div>
                 )}
               </div>
               <div className="mb-4">
-                <Field name="lastname" placeholder="Last name" className="border border-gray-300 rounded-md p-3 w-full" />
+                <Field
+                  name="lastname"
+                  placeholder="Last name"
+                  className="border border-gray-300 rounded-md p-3 w-full"
+                />
                 {errors.lastname && (
                   <div className="text-red-500 text-sm mt-1">{errors.lastname}</div>
                 )}
               </div>
               <div className="mb-4">
-                <Field name="email" type="email" placeholder="Email" className="border border-gray-300 rounded-md p-3 w-full" />
-                {errors.email && (
-                  <div className="text-red-500 text-sm mt-1">{errors.email}</div>
-                )}
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="border border-gray-300 rounded-md p-3 w-full"
+                />
+                {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
               </div>
               <div className="mb-4">
-                <Field name="pwd1" type="password" placeholder="Password" className="border border-gray-300 rounded-md p-3 w-full" />
+                <Field
+                  name="pwd1"
+                  type="password"
+                  placeholder="Password"
+                  className="border border-gray-300 rounded-md p-3 w-full"
+                />
                 {errors.pwd1 && <div className="text-red-500 text-sm mt-1">{errors.pwd1}</div>}
               </div>
               <div className="mb-4">
@@ -93,11 +109,19 @@ function RegistrationForm() {
                 {errors.pwd2 && <div className="text-red-500 text-sm mt-1">{errors.pwd2}</div>}
               </div>
               <div className="mt-10">
-                <button type="submit" className="border border-blue-600 bg-blue-500 hover:bg-blue-600 text-white px-4 py-4 rounded-md w-full">Register</button>
+                <button
+                  type="submit"
+                  className="border border-blue-600 bg-blue-500 hover:bg-blue-600 text-white px-4 py-4 rounded-md w-full"
+                >
+                  Register
+                </button>
               </div>
               <div className="w-10/12 mx-auto mt-4 text-center text-sm text-gray-800">
                 <p>
-                  Already have an account? <Link to="/" className="text-blue-500 hover:underline">Login here</Link>
+                  Already have an account?{' '}
+                  <Link to="/" className="text-blue-500 hover:underline">
+                    Login here
+                  </Link>
                 </p>
               </div>
             </Form>

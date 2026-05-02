@@ -1,13 +1,15 @@
-@use "../../../common/variables" as *;
+@use '../../../common/variables' as *;
 
 .details,
 .extra {
-  transition: $page-transition-duration transform, $page-transition-duration opacity;
+  transition:
+    $page-transition-duration transform,
+    $page-transition-duration opacity;
   transition-delay: 0.3s;
   transition-timing-function: ease-in-out;
 }
 
-:global([class$="-enter"]) {
+:global([class$='-enter']) {
   .details {
     transform: translateX(-50px);
     opacity: 0;

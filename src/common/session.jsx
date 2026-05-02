@@ -1,5 +1,5 @@
-import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const loginLatency = 1000; // milliseconds
 
@@ -10,14 +10,15 @@ const loginLatency = 1000; // milliseconds
  * @param {string} email
  * @param {string} pwd
  */
+// eslint-disable-next-line no-unused-vars
 function login(email, pwd) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       const user = {
         email,
       };
 
-      window.sessionStorage.setItem("user", JSON.stringify(user));
+      window.sessionStorage.setItem('user', JSON.stringify(user));
 
       resolve(user);
     }, loginLatency);
@@ -28,7 +29,7 @@ function login(email, pwd) {
  * Fake hook that returns the user in sessionStorage.
  */
 function useAuthenticatedUser() {
-  return JSON.parse(window.sessionStorage.getItem("user"));
+  return JSON.parse(window.sessionStorage.getItem('user'));
 }
 
 /**
@@ -40,11 +41,7 @@ function ProtectedRoute({ children }) {
   const user = useAuthenticatedUser();
   const location = useLocation();
 
-  return user ? children :
-    <Navigate
-      to="/"
-      state={{ referer: location.pathname }}
-    />;
+  return user ? children : <Navigate to="/" state={{ referer: location.pathname }} />;
 }
 
 export { ProtectedRoute, useAuthenticatedUser, login };

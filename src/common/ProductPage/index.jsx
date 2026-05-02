@@ -1,6 +1,6 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import PageHeader from "../PageHeader";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import PageHeader from '../PageHeader';
 
 const ProductPage = ({ children }) => {
   const location = useLocation();
