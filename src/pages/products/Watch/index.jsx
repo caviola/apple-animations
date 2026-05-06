@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductPage from '../../../common/ProductPage';
+import ProductPage from '../../../components/ProductPage';
 import watch from './styles.module.scss';
 import imageUrl from '../../../images/black-watch-big.png';
 import image2xUrl from '../../../images/black-watch-big@2x.png';

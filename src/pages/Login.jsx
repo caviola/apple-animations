@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { login, useAuthenticatedUser } from '../../common/session';
+import { login, useAuthenticatedUser } from '../globals/session';
 
 const initialPage = '/iphone';
 

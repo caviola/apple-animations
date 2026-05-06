@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductPage from '../../../common/ProductPage';
+import ProductPage from '../../../components/ProductPage';
 import cx from 'classnames';
 import macbook from './styles.module.scss';
 import imageUrl from '../../../images/macbookpro-big.png';

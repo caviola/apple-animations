@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import IPhone from './pages/products/IPhone';
+import IPhone from './pages/products/iPhone';
 import MacBookPro from './pages/products/MacBookPro';
 import Watch from './pages/products/Watch';
 import Login from './pages/Login';
 import RegistrationForm from './pages/RegistrationForm';
-import { ProtectedRoute } from './common/session';
-import PageTransitionGroup from './common/PageTransitionGroup';
+import { ProtectedRoute } from './globals/session';
+import PageTransitionGroup from './components/PageTransitionGroup';
 import './App.module.scss';
 
 const router = createBrowserRouter(
