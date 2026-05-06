@@ -1,5 +1,5 @@
 import React, { cloneElement, createRef, useCallback, useRef } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const TRANSITION_DURATION = 700; // milliseconds
@@ -42,9 +42,17 @@ function getTransitionClassName(referer, dest) {
   return 'cross-fade';
 }
 
-export default function PageTransitionGroup({ children, ...rest }) {
+export default function PageTransitionGroup({
+  onEnter,
+  onEntering,
+  onEntered,
+  onExit,
+  onExiting,
+  onExited,
+  ...rest
+}) {
   const location = useLocation();
-  const transitionKey = location.key;
+  const transitionKey = location.pathname;
 
   const refs = useRef(new Map());
 
@@ -66,7 +74,8 @@ export default function PageTransitionGroup({ children, ...rest }) {
     child => {
       const referer = location.state?.referer;
 
-      if (referer !== location.pathname && location.state?.animate) { // should animate?        
+      // Should animate?
+      if (referer !== location.pathname && location.state?.animate) {
         return cloneElement(child, {
           timeout: TRANSITION_DURATION,
           classNames: getTransitionClassName(referer, location),
@@ -81,19 +90,26 @@ export default function PageTransitionGroup({ children, ...rest }) {
     [location]
   );
 
+  const outlet = useOutlet();
+
   return (
     <TransitionGroup
       className="min-h-screen relative overflow-x-hidden overflow-y-scroll"
       childFactory={transitionGroupChildFactory}
       {...rest}
     >
-      <CSSTransition key={transitionKey} nodeRef={nodeRef}>
+      <CSSTransition
+        key={transitionKey}
+        nodeRef={nodeRef}
+        onEnter={isAppearing => onEnter?.(nodeRef.current, isAppearing)}
+        onEntering={isAppearing => onEntering?.(nodeRef.current, isAppearing)}
+        onEntered={isAppearing => onEntered?.(nodeRef.current, isAppearing)}
+        onExit={isAppearing => onExit?.(nodeRef.current, isAppearing)}
+        onExiting={isAppearing => onExiting?.(nodeRef.current, isAppearing)}
+        onExited={isAppearing => onExited?.(nodeRef.current, isAppearing)}
+      >
         <div ref={nodeRef} className="absolute inset-0 w-full min-h-screen bg-white">
-          <Routes location={location}>
-            {children.map(child => (
-              <Route path={child.props.path} element={child} />
-            ))}
-          </Routes>
+          {outlet}
         </div>
       </CSSTransition>
     </TransitionGroup>

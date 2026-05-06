@@ -4,6 +4,7 @@ Example SPA showcasing page transitions/animations demonstrating:
 - Animating in-page elements when they enter/exit the screen.
 - Use both TailwindCSS utilities for style/layout and custom CSS for in-page transitions.
 - Use advanced TransitionGroup techniques (eg: childFactory).
+- Testable transition logic.
 
 ## Installation
 

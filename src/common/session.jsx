@@ -1,5 +1,4 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const loginLatency = 1000; // milliseconds
 
@@ -29,7 +28,12 @@ function login(email, pwd) {
  * Fake hook that returns the user in sessionStorage.
  */
 function useAuthenticatedUser() {
-  return JSON.parse(window.sessionStorage.getItem('user'));
+  try {
+    return JSON.parse(window.sessionStorage.getItem('user'));
+    // eslint-disable-next-line no-unused-vars
+  } catch (e) {
+    return null;
+  }
 }
 
 /**
@@ -39,9 +43,7 @@ function useAuthenticatedUser() {
  */
 function ProtectedRoute({ children }) {
   const user = useAuthenticatedUser();
-  const location = useLocation();
-
-  return user ? children : <Navigate to="/" state={{ referer: location.pathname }} />;
+  return user ? children : <Navigate to="/" replace />;
 }
 
 export { ProtectedRoute, useAuthenticatedUser, login };

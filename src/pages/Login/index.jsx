@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { login, useAuthenticatedUser } from '../../common/session';
 
 const initialPage = '/iphone';
@@ -8,7 +7,6 @@ const initialPage = '/iphone';
 function Login() {
   const location = useLocation();
   let navigate = useNavigate();
-  const hasRedirected = useRef(false);
 
   // Where to go after successful login.
   const destination =
@@ -45,22 +43,15 @@ function Login() {
 
   const user = useAuthenticatedUser();
 
-  useEffect(() => {
-    if (!user || hasRedirected.current) {
-      return;
-    }
-
-    hasRedirected.current = true;
-    navigate(destination, {
-      replace: true,
-      state: {
+  return user ? (
+    <Navigate
+      to={destination}
+      state={{
         animate: true,
         transitionClass: 'scale-down',
-      },
-    });
-  }, [destination, navigate, user]);
-
-  return user ? null : (
+      }}
+    />
+  ) : (
     <div className="md:w-1/2 lg:w-1/3 max-w-10/12 mx-auto mt-20">
       <Formik
         initialValues={{

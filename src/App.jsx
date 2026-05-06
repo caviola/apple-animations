@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import './App.module.scss';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import IPhone from './pages/products/IPhone';
 import MacBookPro from './pages/products/MacBookPro';
 import Watch from './pages/products/Watch';
@@ -8,31 +7,54 @@ import Login from './pages/Login';
 import RegistrationForm from './pages/RegistrationForm';
 import { ProtectedRoute } from './common/session';
 import PageTransitionGroup from './common/PageTransitionGroup';
+import './App.module.scss';
 
-export function AppRoutes() {
-  return (
-    <PageTransitionGroup>
-      <Login path="/" />
-      <RegistrationForm path="/register" />
-      <ProtectedRoute path="/iphone">
-        <IPhone />
-      </ProtectedRoute>
-      <ProtectedRoute path="/macbook-pro">
-        <MacBookPro />
-      </ProtectedRoute>
-      <ProtectedRoute path="/watch">
-        <Watch />
-      </ProtectedRoute>
-    </PageTransitionGroup>
-  );
-}
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <PageTransitionGroup />,
+      children: [
+        {
+          index: true,
+          element: <Login />,
+        },
+        {
+          path: 'register',
+          element: <RegistrationForm />,
+        },
+        {
+          path: 'iphone',
+          element: (
+            <ProtectedRoute>
+              <IPhone />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'macbook-pro',
+          element: (
+            <ProtectedRoute>
+              <MacBookPro />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'watch',
+          element: (
+            <ProtectedRoute>
+              <Watch />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
+  ],
+  { initialEntries: [{ pathname: '/' }] }
+);
 
 function App() {
-  return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
