@@ -1,6 +1,4 @@
-import { Navigate } from 'react-router-dom';
-
-const loginLatency = 1000; // milliseconds
+const FAKE_LOGIN_LATENCY = 1000; // milliseconds
 
 /**
  * Simulate login operation that takes some time to complete.
@@ -20,7 +18,7 @@ function login(email, pwd) {
       window.sessionStorage.setItem('user', JSON.stringify(user));
 
       resolve(user);
-    }, loginLatency);
+    }, FAKE_LOGIN_LATENCY);
   });
 }
 
@@ -36,14 +34,4 @@ function useAuthenticatedUser() {
   }
 }
 
-/**
- * Renders 'children' if user is authenticated.
- * Otherwise redirect to login page with current route as referer
- * so that after login we are redirected to this route again.
- */
-function ProtectedRoute({ children }) {
-  const user = useAuthenticatedUser();
-  return user ? children : <Navigate to="/" replace />;
-}
-
-export { ProtectedRoute, useAuthenticatedUser, login };
+export { useAuthenticatedUser, login };

@@ -1,57 +1,43 @@
 import { Formik, Form, Field } from 'formik';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { login, useAuthenticatedUser } from '../globals/session';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { login } from '../globals/session';
 
-const initialPage = '/iphone';
+const HOMEPAGE = '/iphone';
+const TEST_EMAIL = 'invalid@example.com';
+const TEST_PASSWORD = '123456';
+const INVALID_CREDENTIALS_ERROR = 'Invalid credentials.';
 
 function Login() {
   const location = useLocation();
   let navigate = useNavigate();
 
   // Where to go after successful login.
-  const destination =
-    location.state && location.state.referer ? location.state.referer : initialPage;
+  const destination = location.state?.referer || HOMEPAGE;
 
   function validate(values) {
     let errors = {};
 
     // TODO: simulate invalid credentials
-    if (
-      values.email &&
-      values.pwd &&
-      values.email === 'invalid@example.com' &&
-      values.pwd === '123456'
-    ) {
-      errors.email = errors.pwd = 'Invalid credentials.';
+    if (values.email === TEST_EMAIL && values.pwd === TEST_PASSWORD) {
+      errors.email = errors.pwd = INVALID_CREDENTIALS_ERROR;
     }
 
     return errors;
   }
 
-  function submit(values) {
+  async function submit(values) {
     // Call login API and on success redirect to referer or initial page.
-    login(values.email, values.pwd).then(() => {
-      navigate(destination, {
-        state: {
-          referer: location.pathname,
-          animate: true,
-          transitionClass: 'scale-down',
-        },
-      });
+    await login(values.email, values.pwd);
+    await navigate(destination, {
+      state: {
+        referer: location.pathname,
+        animate: true,
+        transitionClass: 'scale-down',
+      },
     });
   }
 
-  const user = useAuthenticatedUser();
-
-  return user ? (
-    <Navigate
-      to={destination}
-      state={{
-        animate: true,
-        transitionClass: 'scale-down',
-      }}
-    />
-  ) : (
+  return (
     <div className="md:w-1/2 lg:w-1/3 max-w-10/12 mx-auto mt-20">
       <Formik
         initialValues={{
@@ -109,7 +95,7 @@ function Login() {
                 </p>
                 <p className="mb-4">
                   <strong>Use any email/password to login or leave blank. </strong>
-                  Use email <i>invalid@example.com</i> and password <i>123456</i> to simulated
+                  Use email <i>{TEST_EMAIL}</i> and password <i>{TEST_PASSWORD}</i> to simulated
                   failed login.
                 </p>
                 <p className="mb-4">

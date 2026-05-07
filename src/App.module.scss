@@ -67,7 +67,7 @@
     }
 
     &-exit {
-      display: none;
+      z-index: -1;
     }
   }
 
@@ -82,7 +82,8 @@
     }
 
     &-exit {
-      display: none;
+      // Make sure exiting page is behind the new page during transition.
+      z-index: -1;
     }
   }
 }

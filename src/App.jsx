@@ -5,7 +5,7 @@ import MacBookPro from './pages/products/MacBookPro';
 import Watch from './pages/products/Watch';
 import Login from './pages/Login';
 import RegistrationForm from './pages/RegistrationForm';
-import { ProtectedRoute } from './globals/session';
+import ProtectedRoute from './components/ProtectedRoute';
 import PageTransitionGroup from './components/PageTransitionGroup';
 import './App.module.scss';
 
