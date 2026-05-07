@@ -9,49 +9,46 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PageTransitionGroup from './components/PageTransitionGroup';
 import './App.module.scss';
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <PageTransitionGroup />,
-      children: [
-        {
-          index: true,
-          element: <Login />,
-        },
-        {
-          path: 'register',
-          element: <RegistrationForm />,
-        },
-        {
-          path: 'iphone',
-          element: (
-            <ProtectedRoute>
-              <IPhone />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: 'macbook-pro',
-          element: (
-            <ProtectedRoute>
-              <MacBookPro />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: 'watch',
-          element: (
-            <ProtectedRoute>
-              <Watch />
-            </ProtectedRoute>
-          ),
-        },
-      ],
-    },
-  ],
-  { initialEntries: [{ pathname: '/' }] }
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <PageTransitionGroup />,
+    children: [
+      {
+        index: true,
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <RegistrationForm />,
+      },
+      {
+        path: 'iphone',
+        element: (
+          <ProtectedRoute>
+            <IPhone />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'macbook-pro',
+        element: (
+          <ProtectedRoute>
+            <MacBookPro />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'watch',
+        element: (
+          <ProtectedRoute>
+            <Watch />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
+]);
 
 function App() {
   return <RouterProvider router={router} />;

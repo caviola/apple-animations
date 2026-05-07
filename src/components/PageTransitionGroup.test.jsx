@@ -3,7 +3,7 @@ import { expect, test } from 'vitest';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import PageTransitionGroup from './PageTransitionGroup';
 import { render } from '../utils/test';
-import { ProtectedRoute } from '../globals/session';
+import ProtectedRoute from './ProtectedRoute';
 import { act } from 'react';
 
 function PageTransitionGroupWithAnimation({ clazz }) {
@@ -157,7 +157,7 @@ test('should transition without animation', async () => {
   await waitFor(() => expect(screen.queryByTestId('login')).not.toBeInTheDocument());
 });
 
-test('should redirect to login page when not authenticated', async () => {
+test('should redirect to login page preserving original referer', async () => {
   const router = createMemoryRouter(
     [
       {
@@ -185,4 +185,8 @@ test('should redirect to login page when not authenticated', async () => {
   render(<RouterProvider router={router} />);
 
   expect(screen.getByTestId('login')).toBeInTheDocument();
+  await waitFor(() => {
+    expect(router.state.location.pathname).toBe('/');
+    expect(router.state.location.state?.referer).toBe('/iphone');
+  });
 });
